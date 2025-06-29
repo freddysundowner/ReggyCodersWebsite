@@ -1,0 +1,53 @@
+Create a complete modern company website for **Reggycodas**, a technology company founded by Fredrick Mundia Githumbi. It specializes in building software products and launching startups. The company is based in Kenya.
+
+### 🏢 Company Overview
+- Name: Reggycodas
+- Founder: Fredrick Mundia Githumbi
+- Location: Kenya
+- Description: Reggycodas is a technology company that develops software products and launches innovative startups. The company builds mobile apps, hospital management systems, school management systems, POS systems, SACCO & microfinance software, and more.
+
+### 🌟 Featured Products
+Add a section on the homepage showcasing these major products:
+
+1. **Pointify POS**
+   - A widely used point of sale system available as a mobile app, web app, and desktop app.
+
+2. **Tokshop App**
+   - A mobile app for live shopping, live auctions, and seamless buying & selling of products.
+
+3. **Banky**
+   - A SACCO and microfinance management software that handles loans, member registration, finance, HR, and more.
+
+4. **Shambakit**
+   - An AI-driven innovation for farmers. It detects plant diseases, recommends pesticides, shows where to buy them, and provides a public map with markers indicating disease detection locations.
+
+5. **Listing App**
+   - A real estate platform for managing and marketing properties, listing them with 3D house viewing capabilities.
+
+### 🌐 Website Features
+- A modern responsive UI (mobile friendly)
+- Navigation menu: Home, About Us, Products, Startups, Contact
+- Hero section with company tagline and CTA
+- Products section highlighting the above software
+- About Us section with founder info and company mission
+- Contact Us form (just HTML/CSS, no backend needed yet)
+- Footer with social links placeholders
+- Use simple Tailwind CSS for styling (or Bootstrap if you prefer)
+- SEO-friendly structure
+
+### 📂 Project Setup
+- Use Node.js with Express (if you prefer Next.js mention that).
+- EJS templating or simple HTML.
+- Use Tailwind CSS for styling.
+- Organize folders: `/views`, `/public/css`, `/public/images`, `/routes`, `/app.js`
+- Seed with sample content for all pages.
+
+### 📝 Additional
+- Make sure to include meta tags for SEO.
+- Include favicon placeholder.
+- Include sample images for each product (can be `/public/images/pointify.png` etc).
+- Use environment variables for base URL (ready for future deployment).
+
+**Start by generating all the folders, package.json, install Tailwind CSS, and create basic routes + views for Home, About, Products, Contact.**
+
+Then scaffold initial HTML with sample content and Tailwind classes.
