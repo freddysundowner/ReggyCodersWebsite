@@ -53,17 +53,17 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: "Location",
-      value: "Nairobi, Kenya"
+      value: "Nakuru Mburu Gichua Road, Pioneer Plaza Room 17, Kenya"
     },
     {
       icon: Mail,
       title: "Email",
-      value: "hello@reggycodas.com"
+      value: "info@reggycodas.com"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+254 XXX XXX XXX"
+      value: "+254 715 363 474"
     }
   ];
 
@@ -111,7 +111,7 @@ export default function ContactSection() {
                       <FormItem>
                         <FormLabel>Email Address</FormLabel>
                         <FormControl>
-                          <Input type="email" placeholder="your.email@example.com" {...field} />
+                          <Input type="email" placeholder="info@reggycodas.com" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

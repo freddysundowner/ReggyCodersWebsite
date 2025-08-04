@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { ScanBarcode, ShoppingCart, University, Sprout, Home, ArrowRight } from "lucide-react";
+import { ScanBarcode, ShoppingCart, University, Sprout, Home, ArrowRight, Hospital } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const products = [
@@ -8,18 +8,9 @@ const products = [
     name: "Pointify POS",
     description: "A comprehensive point of sale system available as mobile app, web app, and desktop application. Streamline your business operations with advanced inventory management and sales analytics.",
     icon: ScanBarcode,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
+    image: "assets/logo.png",
     tags: ["Mobile App", "Web App", "Desktop"],
     color: "bg-primary/10 text-primary"
-  },
-  {
-    id: "tokshop",
-    name: "Tokshop App",
-    description: "Revolutionary mobile app for live shopping experiences, real-time auctions, and seamless product trading. Connect buyers and sellers in an interactive marketplace.",
-    icon: ShoppingCart,
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
-    tags: ["Live Shopping", "Auctions"],
-    color: "bg-accent/10 text-accent"
   },
   {
     id: "banky",
@@ -30,6 +21,16 @@ const products = [
     tags: ["Loans", "Finance", "HR"],
     color: "bg-green-100 text-green-700"
   },
+  {
+    id: "medicare",
+    name: "MediCare",
+    description: "Integrated hospital management system supporting patient registration, medical records, outpatient and inpatient care, billing, pharmacy, HR, and detailed clinical and administrative reporting.",
+    icon: Hospital, // optional: replace 'University' with a hospital-related icon
+    image: "https://images.unsplash.com/photo-1580281657527-47dff4d6dd3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+    tags: ["Healthcare", "EMR", "Billing", "HR"],
+    color: "bg-red-100 text-red-700"
+  }
+  ,  
   {
     id: "shambakit",
     name: "Shambakit",
@@ -47,7 +48,16 @@ const products = [
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
     tags: ["3D Viewing", "Real Estate"],
     color: "bg-blue-100 text-blue-700"
-  }
+  },
+  {
+    id: "tokshop",
+    name: "Tokshop App",
+    description: "Revolutionary mobile app for live shopping experiences, real-time auctions, and seamless product trading. Connect buyers and sellers in an interactive marketplace.",
+    icon: ShoppingCart,
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
+    tags: ["Live Shopping", "Auctions"],
+    color: "bg-accent/10 text-accent"
+  },
 ];
 
 export default function ProductsSection() {
