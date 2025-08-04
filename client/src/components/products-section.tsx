@@ -8,7 +8,7 @@ const products = [
     name: "Pointify POS",
     description: "A comprehensive point of sale system available as mobile app, web app, and desktop application. Streamline your business operations with advanced inventory management and sales analytics.",
     icon: ScanBarcode,
-    image: "assets/logo.png",
+    image: "https://pointifypos.com/installers/logoo.png",
     tags: ["Mobile App", "Web App", "Desktop"],
     color: "bg-primary/10 text-primary"
   },
@@ -26,8 +26,8 @@ const products = [
     name: "MediCare",
     description: "Integrated hospital management system supporting patient registration, medical records, outpatient and inpatient care, billing, pharmacy, HR, and detailed clinical and administrative reporting.",
     icon: Hospital, // optional: replace 'University' with a hospital-related icon
-    image: "https://images.unsplash.com/photo-1580281657527-47dff4d6dd3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
-    tags: ["Healthcare", "EMR", "Billing", "HR"],
+
+    image: "https://pointifypos.com/installers/me.png",    tags: ["Healthcare", "EMR", "Billing", "HR"],
     color: "bg-red-100 text-red-700"
   }
   ,  
