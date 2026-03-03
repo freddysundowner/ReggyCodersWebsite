@@ -51,7 +51,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-primary">Reggycodas</h1>
+              <img src="/logo.png" alt="Reggycodas" className="h-10" data-testid="img-logo" />
             </div>
           </div>
           

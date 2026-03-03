@@ -37,7 +37,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Reggycodas</h3>
+            <img src="/logo.png" alt="Reggycodas" className="h-10 mb-4" data-testid="img-footer-logo" />
             <p className="text-gray-300 mb-6 max-w-md">
               Transforming businesses through innovative technology solutions. 
               From software development to startup incubation, we build the future together.
