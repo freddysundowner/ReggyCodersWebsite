@@ -4,9 +4,40 @@ import { storage } from "./storage";
 import { setupAuth, seedAdmin, requireAuth } from "./auth";
 import { insertContactSchema, insertProductSchema, insertBlogPostSchema, insertSeoSettingSchema } from "@shared/schema";
 
+async function seedSeoSettings() {
+  const defaults = [
+    {
+      pageKey: "global",
+      title: "Reggycodas - Technology Solutions & Software Development | Kenya",
+      description: "Reggycodas develops innovative software solutions and launches groundbreaking startups. From mobile apps to enterprise systems, we transform ideas into powerful digital experiences.",
+      keywords: "software development, mobile apps, POS systems, SACCO software, Kenya technology, startup incubator, Reggycodas",
+    },
+    {
+      pageKey: "home",
+      title: "Reggycodas - Building the Future with Smart Technology",
+      description: "Reggycodas is a Kenyan technology company founded by Fredrick Mundia Githumbi. We build products like Pointify POS, Bankykit, MediCare, Shambakit, and more.",
+      keywords: "Reggycodas, Pointify POS, Bankykit, MediCare, Shambakit, Listing App, Tokshop, Kenya software company",
+    },
+    {
+      pageKey: "blog",
+      title: "Blog - Reggycodas | Tech Insights & Updates",
+      description: "Read the latest insights, tutorials, and updates from the Reggycodas team on software development, startups, and technology in Kenya.",
+      keywords: "tech blog, software development blog, Kenya tech, startup tips, Reggycodas blog",
+    },
+  ];
+
+  for (const setting of defaults) {
+    const existing = await storage.getSeoSetting(setting.pageKey);
+    if (!existing) {
+      await storage.upsertSeoSetting(setting);
+    }
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   setupAuth(app);
   await seedAdmin();
+  await seedSeoSettings();
 
   app.get("/api/products", async (_req, res) => {
     const products = await storage.getProducts();
