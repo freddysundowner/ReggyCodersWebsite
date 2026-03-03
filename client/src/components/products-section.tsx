@@ -78,7 +78,7 @@ export default function ProductsSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => {
+          {[...products].sort((a, b) => (b.link ? 1 : 0) - (a.link ? 1 : 0)).map((product) => {
             const Icon = product.icon;
             return (
               <Card key={product.id} className="bg-white dark:bg-gray-800 hover:shadow-xl transition-shadow group">
