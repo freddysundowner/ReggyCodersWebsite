@@ -55,11 +55,14 @@ Create a `.env` file in the project root:
 ```env
 DATABASE_URL=postgresql://reggycodas:your_password@localhost:5432/reggycodas_db
 SESSION_SECRET=any-random-string-here
+PORT=9092
 ```
 
 Replace `your_password` with the password you set above.
 
-`SESSION_SECRET` is optional. If not set, a random one is generated automatically.
+- `DATABASE_URL` (required) - PostgreSQL connection string
+- `SESSION_SECRET` (optional) - If not set, a random one is generated automatically
+- `PORT` (optional) - Server port, defaults to 5000 if not set
 
 ## 4. Create Database Tables
 
