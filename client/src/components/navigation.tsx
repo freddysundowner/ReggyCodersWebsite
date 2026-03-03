@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,13 +62,13 @@ export default function Navigation() {
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 "href" in item && item.href ? (
-                  <a
+                  <Link
                     key={item.id}
                     href={item.href}
                     className="px-3 py-2 text-sm transition-colors text-gray-300 hover:text-white"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ) : (
                   <button
                     key={item.id}
@@ -105,13 +106,13 @@ export default function Navigation() {
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               "href" in item && item.href ? (
-                <a
+                <Link
                   key={item.id}
                   href={item.href}
                   className="block w-full text-left px-3 py-2 transition-colors text-gray-300 hover:text-white"
                 >
                   {item.label}
-                </a>
+                </Link>
               ) : (
                 <button
                   key={item.id}
