@@ -19,7 +19,7 @@ export default function Footer() {
   const products = [
     "Pointify POS",
     "Tokshop App",
-    "Banky",
+    "Bankykit",
     "Shambakit",
     "Listing App",
   ];

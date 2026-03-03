@@ -10,16 +10,18 @@ const products = [
     icon: ScanBarcode,
     image: "https://pointifypos.com/installers/logoo.png",
     tags: ["Mobile App", "Web App", "Desktop"],
-    color: "bg-primary/10 text-primary"
+    color: "bg-primary/10 text-primary",
+    link: "https://pointifypos.com"
   },
   {
-    id: "banky",
-    name: "Banky",
+    id: "bankykit",
+    name: "Bankykit",
     description: "Complete SACCO and microfinance management solution handling loans, member registration, financial operations, HR management, and comprehensive reporting.",
     icon: University,
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
     tags: ["Loans", "Finance", "HR"],
-    color: "bg-green-100 text-green-700"
+    color: "bg-green-100 text-green-700",
+    link: "https://bankykit.com"
   },
   {
     id: "medicare",
@@ -27,10 +29,11 @@ const products = [
     description: "Integrated hospital management system supporting patient registration, medical records, outpatient and inpatient care, billing, pharmacy, HR, and detailed clinical and administrative reporting.",
     icon: Hospital, // optional: replace 'University' with a hospital-related icon
 
-    image: "https://pointifypos.com/installers/me.png",    tags: ["Healthcare", "EMR", "Billing", "HR"],
-    color: "bg-red-100 text-red-700"
-  }
-  ,  
+    image: "https://pointifypos.com/installers/me.png",
+    tags: ["Healthcare", "EMR", "Billing", "HR"],
+    color: "bg-red-100 text-red-700",
+    link: ""
+  },
   {
     id: "shambakit",
     name: "Shambakit",
@@ -38,7 +41,8 @@ const products = [
     icon: Sprout,
     image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
     tags: ["AI Detection", "Mapping"],
-    color: "bg-green-100 text-green-700"
+    color: "bg-green-100 text-green-700",
+    link: ""
   },
   {
     id: "listing",
@@ -47,7 +51,8 @@ const products = [
     icon: Home,
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
     tags: ["3D Viewing", "Real Estate"],
-    color: "bg-blue-100 text-blue-700"
+    color: "bg-blue-100 text-blue-700",
+    link: ""
   },
   {
     id: "tokshop",
@@ -56,7 +61,8 @@ const products = [
     icon: ShoppingCart,
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
     tags: ["Live Shopping", "Auctions"],
-    color: "bg-accent/10 text-accent"
+    color: "bg-accent/10 text-accent",
+    link: "https://tokshoplive.com"
   },
 ];
 
@@ -98,9 +104,15 @@ export default function ProductsSection() {
                       </Badge>
                     ))}
                   </div>
-                  <button className="text-primary font-semibold group-hover:text-accent transition-colors flex items-center">
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </button>
+                  {product.link ? (
+                    <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold group-hover:text-accent transition-colors flex items-center" data-testid={`link-product-${product.id}`}>
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
+                  ) : (
+                    <span className="text-gray-400 flex items-center" data-testid={`link-product-${product.id}`}>
+                      Coming Soon <ArrowRight className="ml-2 h-4 w-4" />
+                    </span>
+                  )}
                 </CardContent>
               </Card>
             );
