@@ -42,6 +42,7 @@ export default function Navigation() {
     { id: "about", label: "About Us" },
     { id: "products", label: "Products" },
     { id: "startups", label: "Startups" },
+    { id: "blog", label: "Blog", href: "/blog" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -59,17 +60,27 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm transition-colors ${
-                    activeSection === item.id
-                      ? "text-primary font-medium border-b-2 border-primary"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </button>
+                "href" in item && item.href ? (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    className="px-3 py-2 text-sm transition-colors text-gray-300 hover:text-white"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`px-3 py-2 text-sm transition-colors ${
+                      activeSection === item.id
+                        ? "text-white font-medium border-b-2 border-white"
+                        : "text-gray-300 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )
               ))}
             </div>
           </div>
@@ -93,17 +104,27 @@ export default function Navigation() {
         <div className="md:hidden bg-primary border-t border-blue-700">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-3 py-2 transition-colors ${
-                  activeSection === item.id
-                    ? "text-primary font-medium"
-                    : "text-gray-300 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </button>
+              "href" in item && item.href ? (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className="block w-full text-left px-3 py-2 transition-colors text-gray-300 hover:text-white"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`block w-full text-left px-3 py-2 transition-colors ${
+                    activeSection === item.id
+                      ? "text-white font-medium"
+                      : "text-gray-300 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              )
             ))}
           </div>
         </div>

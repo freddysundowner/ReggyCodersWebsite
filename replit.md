@@ -52,10 +52,16 @@ This is a modern, responsive company website for Reggycodas, a technology compan
 - **Products Table**: Website products with name, description, icon, image, tags, color, link, sort order
 - **Type Safety**: Drizzle-generated types with Zod validation schemas
 
-### Admin Panel
+### Admin Panel (CMS)
 - **URL**: `/admin/login` → `/admin`
 - **Default credentials**: username: `admin`, password: `admin123`
-- **Features**: Add/edit/delete products, view/delete contact messages
+- **Features**: Dashboard overview, product CRUD, blog post management (draft/publish), contact messages, SEO settings per page
+- **Layout**: Sidebar-based CMS with dark sidebar navigation
+
+### Blog
+- **Public pages**: `/blog` (listing), `/blog/:slug` (individual post)
+- **Admin**: Create/edit/delete posts, toggle publish/draft status
+- **Fields**: title, slug (auto-generated), excerpt, content, cover image, author, published status
 
 ## Data Flow
 
@@ -105,6 +111,7 @@ This is a modern, responsive company website for Reggycodas, a technology compan
 Changelog:
 - June 29, 2025. Initial setup
 - March 3, 2026. Added admin panel with authentication, product management (CRUD from database), and contact message viewing. Switched from in-memory to PostgreSQL storage.
+- March 3, 2026. Rebuilt admin as proper CMS with sidebar layout, added blog posts system and SEO settings management.
 
 ## User Preferences
 
