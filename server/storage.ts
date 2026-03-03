@@ -1,12 +1,13 @@
 import { eq, asc, desc } from "drizzle-orm";
 import { db } from "./db";
 import {
-  users, contacts, products, blogPosts, seoSettings,
+  users, contacts, products, blogPosts, seoSettings, socialLinks,
   type User, type InsertUser,
   type Contact, type InsertContact,
   type Product, type InsertProduct,
   type BlogPost, type InsertBlogPost,
   type SeoSetting, type InsertSeoSetting,
+  type SocialLink, type InsertSocialLink,
 } from "@shared/schema";
 
 export interface IStorage {
@@ -35,6 +36,10 @@ export interface IStorage {
   getSeoSetting(pageKey: string): Promise<SeoSetting | undefined>;
   upsertSeoSetting(setting: InsertSeoSetting): Promise<SeoSetting>;
   deleteSeoSetting(id: number): Promise<void>;
+
+  getSocialLinks(): Promise<SocialLink[]>;
+  upsertSocialLink(link: InsertSocialLink): Promise<SocialLink>;
+  deleteSocialLink(id: number): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -141,6 +146,24 @@ export class DatabaseStorage implements IStorage {
 
   async deleteSeoSetting(id: number): Promise<void> {
     await db.delete(seoSettings).where(eq(seoSettings.id, id));
+  }
+
+  async getSocialLinks(): Promise<SocialLink[]> {
+    return db.select().from(socialLinks).orderBy(asc(socialLinks.sortOrder));
+  }
+
+  async upsertSocialLink(link: InsertSocialLink): Promise<SocialLink> {
+    const [existing] = await db.select().from(socialLinks).where(eq(socialLinks.platform, link.platform));
+    if (existing) {
+      const [updated] = await db.update(socialLinks).set(link).where(eq(socialLinks.platform, link.platform)).returning();
+      return updated;
+    }
+    const [created] = await db.insert(socialLinks).values(link).returning();
+    return created;
+  }
+
+  async deleteSocialLink(id: number): Promise<void> {
+    await db.delete(socialLinks).where(eq(socialLinks.id, id));
   }
 }
 

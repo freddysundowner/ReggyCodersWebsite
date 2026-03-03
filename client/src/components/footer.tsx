@@ -1,6 +1,26 @@
-import { Twitter, Linkedin, Github, Instagram } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "wouter";
+import { Twitter, Linkedin, Github, Instagram, Facebook, Youtube } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
+import type { SocialLink } from "@shared/schema";
+
+const platformIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  Twitter: Twitter,
+  LinkedIn: Linkedin,
+  GitHub: Github,
+  Instagram: Instagram,
+  Facebook: Facebook,
+  YouTube: Youtube,
+  TikTok: SiTiktok,
+};
 
 export default function Footer() {
+  const { data: socialLinks } = useQuery<SocialLink[]>({
+    queryKey: ["/api/social-links"],
+  });
+
+  const visibleLinks = socialLinks?.filter((link) => link.url) ?? [];
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -24,42 +44,38 @@ export default function Footer() {
     "Listing App",
   ];
 
-  const socialLinks = [
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-  ];
-
   return (
     <footer className="bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
-          {/* Company Info */}
           <div className="md:col-span-2">
             <img src="/logo.png" alt="Reggycodas" className="h-10 mb-4" data-testid="img-footer-logo" />
             <p className="text-gray-300 mb-6 max-w-md">
               Transforming businesses through innovative technology solutions. 
               From software development to startup incubation, we build the future together.
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="bg-primary hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                );
-              })}
-            </div>
+            {visibleLinks.length > 0 && (
+              <div className="flex space-x-4">
+                {visibleLinks.map((link) => {
+                  const Icon = platformIcons[link.platform];
+                  return (
+                    <a
+                      key={link.id}
+                      href={link.url!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.platform}
+                      className="bg-primary hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors"
+                      data-testid={`link-social-${link.platform.toLowerCase()}`}
+                    >
+                      {Icon ? <Icon className="h-5 w-5" /> : <span className="text-xs font-bold">{link.platform.charAt(0)}</span>}
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-300">
@@ -73,18 +89,20 @@ export default function Footer() {
                   </button>
                 </li>
               ))}
+              <li>
+                <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+              </li>
             </ul>
           </div>
 
-          {/* Products */}
           <div>
             <h4 className="font-semibold mb-4">Our Products</h4>
             <ul className="space-y-2 text-gray-300">
               {products.map((product) => (
                 <li key={product}>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <button onClick={() => scrollToSection("products")} className="hover:text-white transition-colors">
                     {product}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

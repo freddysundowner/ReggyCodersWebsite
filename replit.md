@@ -55,13 +55,18 @@ This is a modern, responsive company website for Reggycodas, a technology compan
 ### Admin Panel (CMS)
 - **URL**: `/admin/login` → `/admin`
 - **Default credentials**: username: `admin`, password: `admin123`
-- **Features**: Dashboard overview, product CRUD, blog post management (draft/publish), contact messages, SEO settings per page
+- **Features**: Dashboard overview, product CRUD, blog post management (draft/publish), contact messages, SEO settings per page, social links manager
 - **Layout**: Sidebar-based CMS with dark sidebar navigation
 
 ### Blog
 - **Public pages**: `/blog` (listing), `/blog/:slug` (individual post)
 - **Admin**: Create/edit/delete posts, toggle publish/draft status
 - **Fields**: title, slug (auto-generated), excerpt, content, cover image, author, published status
+
+### Social Links
+- **Admin**: Manage social media platforms and URLs
+- **Seeded platforms**: Twitter, LinkedIn, GitHub, Instagram, Facebook, YouTube, TikTok (all start with no URL)
+- **Public behavior**: Footer only shows platforms that have a URL set; hidden if no URL
 
 ## Data Flow
 

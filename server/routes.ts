@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, seedAdmin, requireAuth } from "./auth";
-import { insertContactSchema, insertProductSchema, insertBlogPostSchema, insertSeoSettingSchema } from "@shared/schema";
+import { insertContactSchema, insertProductSchema, insertBlogPostSchema, insertSeoSettingSchema, insertSocialLinkSchema } from "@shared/schema";
 
 async function seedSeoSettings() {
   const defaults = [
@@ -34,10 +34,30 @@ async function seedSeoSettings() {
   }
 }
 
+async function seedSocialLinks() {
+  const defaults = [
+    { platform: "Twitter", url: null, sortOrder: 0 },
+    { platform: "LinkedIn", url: null, sortOrder: 1 },
+    { platform: "GitHub", url: null, sortOrder: 2 },
+    { platform: "Instagram", url: null, sortOrder: 3 },
+    { platform: "Facebook", url: null, sortOrder: 4 },
+    { platform: "YouTube", url: null, sortOrder: 5 },
+    { platform: "TikTok", url: null, sortOrder: 6 },
+  ];
+
+  const existing = await storage.getSocialLinks();
+  if (existing.length === 0) {
+    for (const link of defaults) {
+      await storage.upsertSocialLink(link);
+    }
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   setupAuth(app);
   await seedAdmin();
   await seedSeoSettings();
+  await seedSocialLinks();
 
   app.get("/api/products", async (_req, res) => {
     const products = await storage.getProducts();
@@ -144,6 +164,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const id = parseInt(req.params.id);
     await storage.deleteSeoSetting(id);
     res.json({ message: "SEO setting deleted" });
+  });
+
+  app.get("/api/social-links", async (_req, res) => {
+    const links = await storage.getSocialLinks();
+    res.json(links);
+  });
+
+  app.post("/api/social-links", requireAuth, async (req, res) => {
+    const parsed = insertSocialLinkSchema.safeParse(req.body);
+    if (!parsed.success) return res.status(400).json({ message: parsed.error.message });
+    const link = await storage.upsertSocialLink(parsed.data);
+    res.json(link);
+  });
+
+  app.delete("/api/social-links/:id", requireAuth, async (req, res) => {
+    const id = parseInt(req.params.id);
+    await storage.deleteSocialLink(id);
+    res.json({ message: "Social link deleted" });
   });
 
   const httpServer = createServer(app);

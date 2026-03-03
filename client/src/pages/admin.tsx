@@ -10,13 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest, queryClient, getQueryFn } from "@/lib/queryClient";
-import type { Product, Contact, BlogPost, SeoSetting } from "@shared/schema";
+import type { Product, Contact, BlogPost, SeoSetting, SocialLink } from "@shared/schema";
 import {
   LogOut, Plus, Pencil, Trash2, Package, Mail, X, Save,
-  LayoutDashboard, FileText, Search, Eye, EyeOff, ExternalLink, ChevronRight
+  LayoutDashboard, FileText, Search, Eye, EyeOff, ExternalLink, ChevronRight, Share2
 } from "lucide-react";
 
-type Page = "dashboard" | "products" | "blog" | "contacts" | "seo";
+type Page = "dashboard" | "products" | "blog" | "contacts" | "seo" | "social";
 
 export default function AdminDashboard() {
   const [activePage, setActivePage] = useState<Page>("dashboard");
@@ -52,6 +52,7 @@ export default function AdminDashboard() {
     { key: "blog" as Page, label: "Blog Posts", icon: FileText },
     { key: "contacts" as Page, label: "Messages", icon: Mail },
     { key: "seo" as Page, label: "SEO Settings", icon: Search },
+    { key: "social" as Page, label: "Social Links", icon: Share2 },
   ];
 
   return (
@@ -118,6 +119,7 @@ export default function AdminDashboard() {
           {activePage === "blog" && <BlogManager />}
           {activePage === "contacts" && <ContactsManager />}
           {activePage === "seo" && <SeoManager />}
+          {activePage === "social" && <SocialLinksManager />}
         </div>
       </main>
     </div>
@@ -711,6 +713,159 @@ function SeoManager() {
           );
         })}
       </div>
+    </div>
+  );
+}
+
+function SocialLinksManager() {
+  const { toast } = useToast();
+  const linksQuery = useQuery<SocialLink[]>({ queryKey: ["/api/social-links"] });
+
+  const saveMutation = useMutation({
+    mutationFn: (link: { platform: string; url: string | null; sortOrder: number }) =>
+      apiRequest("POST", "/api/social-links", link),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/social-links"] });
+      toast({ title: "Social link saved" });
+    },
+    onError: () => toast({ title: "Error saving link", variant: "destructive" }),
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: number) => apiRequest("DELETE", `/api/social-links/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/social-links"] });
+      toast({ title: "Social link removed" });
+    },
+  });
+
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editUrl, setEditUrl] = useState("");
+  const [adding, setAdding] = useState(false);
+  const [newPlatform, setNewPlatform] = useState("");
+  const [newUrl, setNewUrl] = useState("");
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900" data-testid="text-social-title">Social Links</h1>
+          <p className="text-gray-500 mt-1">Manage your social media links. Only links with a URL will show on the site.</p>
+        </div>
+        <Button onClick={() => setAdding(true)} data-testid="button-add-social">
+          <Plus className="h-4 w-4 mr-2" /> Add Platform
+        </Button>
+      </div>
+
+      {adding && (
+        <Card className="mb-6">
+          <CardContent className="p-5">
+            <div className="grid md:grid-cols-3 gap-4 items-end">
+              <div>
+                <Label className="text-xs text-gray-500">Platform Name</Label>
+                <Input value={newPlatform} onChange={(e) => setNewPlatform(e.target.value)} placeholder="e.g. WhatsApp" data-testid="input-new-platform" />
+              </div>
+              <div>
+                <Label className="text-xs text-gray-500">URL</Label>
+                <Input value={newUrl} onChange={(e) => setNewUrl(e.target.value)} placeholder="https://..." data-testid="input-new-social-url" />
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => {
+                    if (!newPlatform.trim()) return;
+                    saveMutation.mutate({ platform: newPlatform.trim(), url: newUrl.trim() || null, sortOrder: (linksQuery.data?.length ?? 0) });
+                    setAdding(false);
+                    setNewPlatform("");
+                    setNewUrl("");
+                  }}
+                  disabled={saveMutation.isPending}
+                  data-testid="button-save-new-social"
+                >
+                  <Save className="h-4 w-4 mr-2" /> Save
+                </Button>
+                <Button variant="outline" onClick={() => { setAdding(false); setNewPlatform(""); setNewUrl(""); }}>Cancel</Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {linksQuery.isLoading ? (
+        <div className="text-gray-500 py-8 text-center">Loading...</div>
+      ) : (
+        <div className="bg-white rounded-lg border">
+          <table className="w-full">
+            <thead className="bg-gray-50 border-b">
+              <tr>
+                <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">Platform</th>
+                <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">URL</th>
+                <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase">Visible</th>
+                <th className="text-right px-4 py-3 text-xs font-medium text-gray-500 uppercase">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {linksQuery.data?.map((link) => (
+                <tr key={link.id} className="border-b last:border-0 hover:bg-gray-50">
+                  <td className="px-4 py-3 font-medium text-sm" data-testid={`text-social-platform-${link.id}`}>{link.platform}</td>
+                  <td className="px-4 py-3">
+                    {editingId === link.id ? (
+                      <div className="flex gap-2">
+                        <Input
+                          value={editUrl}
+                          onChange={(e) => setEditUrl(e.target.value)}
+                          placeholder="https://..."
+                          className="h-8 text-sm"
+                          data-testid={`input-edit-social-url-${link.id}`}
+                        />
+                        <Button
+                          size="sm"
+                          onClick={() => {
+                            saveMutation.mutate({ platform: link.platform, url: editUrl.trim() || null, sortOrder: link.sortOrder });
+                            setEditingId(null);
+                          }}
+                          disabled={saveMutation.isPending}
+                          data-testid={`button-save-social-${link.id}`}
+                        >
+                          <Save className="h-3 w-3" />
+                        </Button>
+                        <Button size="sm" variant="outline" onClick={() => setEditingId(null)}>
+                          <X className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    ) : (
+                      <span className="text-sm text-gray-500">
+                        {link.url ? (
+                          <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{link.url}</a>
+                        ) : (
+                          <span className="text-gray-400 italic">No URL set</span>
+                        )}
+                      </span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3">
+                    <Badge variant={link.url ? "default" : "secondary"}>
+                      {link.url ? <><Eye className="h-3 w-3 mr-1" />Visible</> : <><EyeOff className="h-3 w-3 mr-1" />Hidden</>}
+                    </Badge>
+                  </td>
+                  <td className="px-4 py-3 text-right">
+                    <div className="flex gap-1 justify-end">
+                      <Button variant="ghost" size="sm" onClick={() => { setEditingId(link.id); setEditUrl(link.url || ""); }} data-testid={`button-edit-social-${link.id}`}>
+                        <Pencil className="h-4 w-4" />
+                      </Button>
+                      <Button variant="ghost" size="sm" className="text-red-500 hover:text-red-700" onClick={() => deleteMutation.mutate(link.id)} data-testid={`button-delete-social-${link.id}`}>
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {linksQuery.data?.length === 0 && (
+            <p className="text-gray-500 text-center py-8">No social links configured.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

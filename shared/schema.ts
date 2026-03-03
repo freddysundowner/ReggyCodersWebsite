@@ -52,6 +52,13 @@ export const seoSettings = pgTable("seo_settings", {
   ogImage: text("og_image"),
 });
 
+export const socialLinks = pgTable("social_links", {
+  id: serial("id").primaryKey(),
+  platform: text("platform").notNull().unique(),
+  url: text("url"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -76,6 +83,10 @@ export const insertSeoSettingSchema = createInsertSchema(seoSettings).omit({
   id: true,
 });
 
+export const insertSocialLinkSchema = createInsertSchema(socialLinks).omit({
+  id: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type InsertContact = z.infer<typeof insertContactSchema>;
@@ -86,3 +97,5 @@ export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertSeoSetting = z.infer<typeof insertSeoSettingSchema>;
 export type SeoSetting = typeof seoSettings.$inferSelect;
+export type InsertSocialLink = z.infer<typeof insertSocialLinkSchema>;
+export type SocialLink = typeof socialLinks.$inferSelect;
