@@ -46,7 +46,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-gray-900 shadow-lg fixed w-full top-0 z-50">
+    <nav className="bg-primary shadow-lg fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
@@ -90,7 +90,7 @@ export default function Navigation() {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-900 border-t border-gray-800">
+        <div className="md:hidden bg-primary border-t border-blue-700">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <button
