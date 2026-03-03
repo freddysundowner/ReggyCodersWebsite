@@ -1,72 +1,71 @@
+import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScanBarcode, ShoppingCart, University, Sprout, Home, ArrowRight, Hospital } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import type { Product } from "@shared/schema";
 
-const products = [
+const iconMap: Record<string, any> = {
+  ScanBarcode, ShoppingCart, University, Sprout, Home, Hospital,
+};
+
+const defaultProducts = [
   {
-    id: "pointify",
-    name: "Pointify POS",
+    id: 0, name: "Pointify POS",
     description: "A comprehensive point of sale system available as mobile app, web app, and desktop application. Streamline your business operations with advanced inventory management and sales analytics.",
-    icon: ScanBarcode,
-    image: "https://pointifypos.com/installers/logoo.png",
-    tags: ["Mobile App", "Web App", "Desktop"],
-    color: "bg-primary/10 text-primary",
-    link: "https://pointifypos.com"
+    icon: "ScanBarcode", image: "https://pointifypos.com/installers/logoo.png",
+    tags: ["Mobile App", "Web App", "Desktop"], color: "bg-primary/10 text-primary",
+    link: "https://pointifypos.com", sortOrder: 0,
   },
   {
-    id: "bankykit",
-    name: "Bankykit",
+    id: 0, name: "Bankykit",
     description: "Complete SACCO and microfinance management solution handling loans, member registration, financial operations, HR management, and comprehensive reporting.",
-    icon: University,
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
-    tags: ["Loans", "Finance", "HR"],
-    color: "bg-green-100 text-green-700",
-    link: "https://bankykit.com"
+    icon: "University", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+    tags: ["Loans", "Finance", "HR"], color: "bg-green-100 text-green-700",
+    link: "https://bankykit.com", sortOrder: 1,
   },
   {
-    id: "medicare",
-    name: "MediCare",
-    description: "Integrated hospital management system supporting patient registration, medical records, outpatient and inpatient care, billing, pharmacy, HR, and detailed clinical and administrative reporting.",
-    icon: Hospital, // optional: replace 'University' with a hospital-related icon
-
-    image: "https://pointifypos.com/installers/me.png",
-    tags: ["Healthcare", "EMR", "Billing", "HR"],
-    color: "bg-red-100 text-red-700",
-    link: ""
-  },
-  {
-    id: "shambakit",
-    name: "Shambakit",
-    description: "AI-powered agricultural innovation that detects plant diseases, recommends treatments, locates suppliers, and provides disease mapping for farming communities.",
-    icon: Sprout,
-    image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
-    tags: ["AI Detection", "Mapping"],
-    color: "bg-green-100 text-green-700",
-    link: ""
-  },
-  {
-    id: "listing",
-    name: "Listing App",
-    description: "Advanced real estate platform for property management and marketing with immersive 3D house viewing capabilities and comprehensive listing tools.",
-    icon: Home,
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
-    tags: ["3D Viewing", "Real Estate"],
-    color: "bg-blue-100 text-blue-700",
-    link: ""
-  },
-  {
-    id: "tokshop",
-    name: "Tokshop App",
+    id: 0, name: "Tokshop App",
     description: "Revolutionary mobile app for live shopping experiences, real-time auctions, and seamless product trading. Connect buyers and sellers in an interactive marketplace.",
-    icon: ShoppingCart,
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250",
-    tags: ["Live Shopping", "Auctions"],
-    color: "bg-accent/10 text-accent",
-    link: "https://tokshoplive.com"
+    icon: "ShoppingCart", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+    tags: ["Live Shopping", "Auctions"], color: "bg-accent/10 text-accent",
+    link: "https://tokshoplive.com", sortOrder: 2,
+  },
+  {
+    id: 0, name: "MediCare",
+    description: "Integrated hospital management system supporting patient registration, medical records, outpatient and inpatient care, billing, pharmacy, HR, and detailed clinical and administrative reporting.",
+    icon: "Hospital", image: "https://pointifypos.com/installers/me.png",
+    tags: ["Healthcare", "EMR", "Billing", "HR"], color: "bg-red-100 text-red-700",
+    link: null, sortOrder: 3,
+  },
+  {
+    id: 0, name: "Shambakit",
+    description: "AI-powered agricultural innovation that detects plant diseases, recommends treatments, locates suppliers, and provides disease mapping for farming communities.",
+    icon: "Sprout", image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+    tags: ["AI Detection", "Mapping"], color: "bg-green-100 text-green-700",
+    link: null, sortOrder: 4,
+  },
+  {
+    id: 0, name: "Listing App",
+    description: "Advanced real estate platform for property management and marketing with immersive 3D house viewing capabilities and comprehensive listing tools.",
+    icon: "Home", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+    tags: ["3D Viewing", "Real Estate"], color: "bg-blue-100 text-blue-700",
+    link: null, sortOrder: 5,
   },
 ];
 
 export default function ProductsSection() {
+  const { data: apiProducts } = useQuery<Product[]>({
+    queryKey: ["/api/products"],
+  });
+
+  const products = apiProducts && apiProducts.length > 0 ? apiProducts : defaultProducts;
+  const sorted = [...products].sort((a, b) => {
+    const aHasLink = a.link ? 1 : 0;
+    const bHasLink = b.link ? 1 : 0;
+    if (bHasLink !== aHasLink) return bHasLink - aHasLink;
+    return a.sortOrder - b.sortOrder;
+  });
+
   return (
     <section id="products" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,14 +77,14 @@ export default function ProductsSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[...products].sort((a, b) => (b.link ? 1 : 0) - (a.link ? 1 : 0)).map((product) => {
-            const Icon = product.icon;
+          {sorted.map((product) => {
+            const Icon = iconMap[product.icon] || ScanBarcode;
             return (
-              <Card key={product.id} className="bg-white dark:bg-gray-800 hover:shadow-xl transition-shadow group">
+              <Card key={product.id || product.name} className="bg-white dark:bg-gray-800 hover:shadow-xl transition-shadow group">
                 <CardContent className="p-6">
                   <div className="mb-6">
-                    <img 
-                      src={product.image} 
+                    <img
+                      src={product.image}
                       alt={`${product.name} interface`}
                       className="w-full h-48 object-cover rounded-lg"
                     />
@@ -105,11 +104,11 @@ export default function ProductsSection() {
                     ))}
                   </div>
                   {product.link ? (
-                    <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold group-hover:text-accent transition-colors flex items-center" data-testid={`link-product-${product.id}`}>
+                    <a href={product.link} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold group-hover:text-accent transition-colors flex items-center" data-testid={`link-product-${product.name}`}>
                       Learn More <ArrowRight className="ml-2 h-4 w-4" />
                     </a>
                   ) : (
-                    <span className="text-gray-400 flex items-center" data-testid={`link-product-${product.id}`}>
+                    <span className="text-gray-400 flex items-center" data-testid={`link-product-${product.name}`}>
                       Coming Soon <ArrowRight className="ml-2 h-4 w-4" />
                     </span>
                   )}

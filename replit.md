@@ -31,22 +31,31 @@ This is a modern, responsive company website for Reggycodas, a technology compan
 ### Frontend Components
 1. **Navigation**: Fixed header with smooth scrolling navigation
 2. **Hero Section**: Company introduction with call-to-action buttons
-3. **Products Section**: Showcase of five major software products
+3. **Products Section**: Fetches products from database API, with hardcoded fallback
 4. **About Section**: Company story and founder information
 5. **Startups Section**: Startup incubation services
-6. **Contact Section**: Contact form with validation
+6. **Contact Section**: Contact form submitting to API
 7. **Footer**: Company links and social media placeholders
+8. **Admin Login** (`/admin/login`): Secure admin authentication
+9. **Admin Dashboard** (`/admin`): Manage products and view contact messages
 
 ### Backend Components
-1. **Route Handler**: Centralized API route registration
-2. **Storage Layer**: Abstracted CRUD interface with memory and database implementations
-3. **Vite Integration**: Development server with HMR support
-4. **Request Logging**: Comprehensive API request logging middleware
+1. **Route Handler**: API routes for products CRUD, contacts, and authentication
+2. **Storage Layer**: PostgreSQL-backed storage via Drizzle ORM
+3. **Authentication**: Passport.js with local strategy, session-based auth with connect-pg-simple
+4. **Vite Integration**: Development server with HMR support
+5. **Request Logging**: Comprehensive API request logging middleware
 
 ### Database Schema
-- **Users Table**: Basic user authentication structure
+- **Users Table**: Admin authentication (username/hashed password)
 - **Contacts Table**: Contact form submissions with timestamps
+- **Products Table**: Website products with name, description, icon, image, tags, color, link, sort order
 - **Type Safety**: Drizzle-generated types with Zod validation schemas
+
+### Admin Panel
+- **URL**: `/admin/login` → `/admin`
+- **Default credentials**: username: `admin`, password: `admin123`
+- **Features**: Add/edit/delete products, view/delete contact messages
 
 ## Data Flow
 
@@ -95,6 +104,7 @@ This is a modern, responsive company website for Reggycodas, a technology compan
 
 Changelog:
 - June 29, 2025. Initial setup
+- March 3, 2026. Added admin panel with authentication, product management (CRUD from database), and contact message viewing. Switched from in-memory to PostgreSQL storage.
 
 ## User Preferences
 

@@ -29,16 +29,20 @@ export default function ContactSection() {
   const onSubmit = async (data: InsertContact) => {
     setIsSubmitting(true);
     try {
-      // Simulate form submission - in real app this would call the API
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const res = await fetch("/api/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+
       toast({
         title: "Message sent successfully!",
         description: "We will get back to you soon.",
       });
-      
+
       form.reset();
-    } catch (error) {
+    } catch {
       toast({
         title: "Error sending message",
         description: "Please try again later.",
