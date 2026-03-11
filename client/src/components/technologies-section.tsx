@@ -1,4 +1,4 @@
-import { SiPython, SiNodedotjs, SiReact, SiMongodb, SiPostgresql, SiFlutter, SiAndroid, SiSwift } from "react-icons/si";
+import { SiPython, SiNodedotjs, SiReact, SiMongodb, SiPostgresql, SiFlutter, SiAndroid, SiSwift, SiTensorflow } from "react-icons/si";
 
 const technologies = [
   { name: "Python", icon: SiPython, color: "#3776AB" },
@@ -9,6 +9,7 @@ const technologies = [
   { name: "Flutter", icon: SiFlutter, color: "#02569B" },
   { name: "Android", icon: SiAndroid, color: "#3DDC84" },
   { name: "SwiftUI", icon: SiSwift, color: "#F05138" },
+  { name: "Machine Learning", icon: SiTensorflow, color: "#FF6F00" },
 ];
 
 export default function TechnologiesSection() {
@@ -23,7 +24,7 @@ export default function TechnologiesSection() {
             We build with modern, battle-tested technologies to deliver reliable and scalable solutions.
           </p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-6">
           {technologies.map((tech) => {
             const Icon = tech.icon;
             return (
