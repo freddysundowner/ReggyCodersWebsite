@@ -1,5 +1,6 @@
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
+import TechnologiesSection from "@/components/technologies-section";
 import ProductsSection from "@/components/products-section";
 import AboutSection from "@/components/about-section";
 import StartupsSection from "@/components/startups-section";
@@ -13,6 +14,7 @@ export default function Home() {
       <SeoHead pageKey="home" />
       <Navigation />
       <HeroSection />
+      <TechnologiesSection />
       <ProductsSection />
       <AboutSection />
       <StartupsSection />
