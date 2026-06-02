@@ -35,7 +35,7 @@ const defaultProducts = [
   {
     id: 0, name: "MediCare",
     description: "Integrated hospital management system supporting patient registration, medical records, outpatient and inpatient care, billing, pharmacy, HR, and detailed clinical and administrative reporting.",
-    icon: "Hospital", image: "https://pointifypos.com/installers/me.png",
+    icon: "Hospital", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
     tags: ["Healthcare", "EMR", "Billing", "HR"], color: "bg-red-100 text-red-700",
     link: null, sortOrder: 3,
   },
