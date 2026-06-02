@@ -41,7 +41,7 @@ export default function Footer() {
     "Tokshop App",
     "Bankykit",
     "Shambakit",
-    "Listing App",
+    "Pro Suite",
   ];
 
   return (

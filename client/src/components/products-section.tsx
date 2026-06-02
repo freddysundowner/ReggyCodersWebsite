@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ScanBarcode, ShoppingCart, University, Sprout, Home, ArrowRight, Hospital } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Product } from "@shared/schema";
+import pointifyImg from "@assets/screenshots/pointifypos_com.png";
+import proSuiteImg from "@assets/screenshots/pro-suite_co.png";
 
 const iconMap: Record<string, any> = {
   ScanBarcode, ShoppingCart, University, Sprout, Home, Hospital,
@@ -12,7 +14,7 @@ const defaultProducts = [
   {
     id: 0, name: "Pointify POS",
     description: "A comprehensive point of sale system available as mobile app, web app, and desktop application. Streamline your business operations with advanced inventory management and sales analytics.",
-    icon: "ScanBarcode", image: "https://pointifypos.com/installers/logoo.png",
+    icon: "ScanBarcode", image: pointifyImg,
     tags: ["Mobile App", "Web App", "Desktop"], color: "bg-primary/10 text-primary",
     link: "https://pointifypos.com", sortOrder: 0,
   },
@@ -45,11 +47,11 @@ const defaultProducts = [
     link: null, sortOrder: 4,
   },
   {
-    id: 0, name: "Listing App",
-    description: "Advanced real estate platform for property management and marketing with immersive 3D house viewing capabilities and comprehensive listing tools.",
-    icon: "Home", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
-    tags: ["3D Viewing", "Real Estate"], color: "bg-blue-100 text-blue-700",
-    link: null, sortOrder: 5,
+    id: 0, name: "Pro Suite",
+    description: "Kenya's all-in-one property management platform. Collect rent via M-Pesa, track arrears, manage tenants, handle land sales, and run hotel bookings — all from one dashboard.",
+    icon: "Home", image: proSuiteImg,
+    tags: ["Property", "M-Pesa", "Hospitality"], color: "bg-blue-100 text-blue-700",
+    link: "https://pro-suite.co", sortOrder: 5,
   },
 ];
 
