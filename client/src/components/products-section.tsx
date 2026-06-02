@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
-import { ScanBarcode, ShoppingCart, University, Sprout, Home, ArrowRight, Hospital } from "lucide-react";
+import { ScanBarcode, ShoppingCart, University, Sprout, Home, ArrowRight, Hospital, CreditCard } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Product } from "@shared/schema";
 import pointifyImg from "@assets/screenshots/pointifypos_com.png";
 import proSuiteImg from "@assets/screenshots/pro-suite_co.png";
+import sunpayImg from "@assets/screenshots/sunpay_co_ke.png";
 
 const iconMap: Record<string, any> = {
-  ScanBarcode, ShoppingCart, University, Sprout, Home, Hospital,
+  ScanBarcode, ShoppingCart, University, Sprout, Home, Hospital, CreditCard,
 };
 
 const defaultProducts = [
@@ -52,6 +53,13 @@ const defaultProducts = [
     icon: "Home", image: proSuiteImg,
     tags: ["Property", "M-Pesa", "Hospitality"], color: "bg-blue-100 text-blue-700",
     link: "https://pro-suite.co", sortOrder: 5,
+  },
+  {
+    id: 0, name: "SunPay",
+    description: "Accept M-Pesa payments in your app with one API key and one endpoint. SunPay sits between your app and Safaricom — handling auth, STK push, and webhooks so you don't have to.",
+    icon: "CreditCard", image: sunpayImg,
+    tags: ["M-Pesa", "Payments API", "STK Push"], color: "bg-primary/10 text-primary",
+    link: "https://sunpay.co.ke", sortOrder: 6,
   },
 ];
 

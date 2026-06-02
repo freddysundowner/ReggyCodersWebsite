@@ -42,6 +42,7 @@ export default function Footer() {
     "Bankykit",
     "Shambakit",
     "Pro Suite",
+    "SunPay",
   ];
 
   return (
