@@ -111,6 +111,14 @@ This is a modern, responsive company website for Reggycodas, a technology compan
 - **Database Migrations**: Drizzle Kit for schema management
 - **Type Safety**: Shared types between frontend and backend via `shared/` directory
 
+## Running on Replit
+
+- **Start**: `npm run dev` (configured as the default workflow, runs on port 5000)
+- **Database**: Uses Replit's built-in PostgreSQL — `DATABASE_URL` is set automatically
+- **Schema**: Run `npm run db:push` after any schema changes in `shared/schema.ts`
+- **Admin panel**: Visit `/admin/login` — default credentials are `admin` / `admin123` (change after first login)
+- **SESSION_SECRET**: Stored as a Replit secret
+
 ## Changelog
 
 Changelog:
