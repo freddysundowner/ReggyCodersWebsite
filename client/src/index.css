@@ -75,7 +75,7 @@
   .reveal-delay-3 { animation-delay: .3s; }
 }
 
-.section-shell { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+.section-shell { width: min(90%, 1600px); margin-inline: auto; }
 .soft-grid { background-image: linear-gradient(hsl(232 38% 18% / .035) 1px, transparent 1px), linear-gradient(90deg, hsl(232 38% 18% / .035) 1px, transparent 1px); background-size: 44px 44px; }
 .outline-button { border: 1px solid hsl(232 38% 18% / .2); color: hsl(var(--primary)); }
 .outline-button:hover { border-color: hsl(var(--accent)); color: hsl(var(--accent)); }
