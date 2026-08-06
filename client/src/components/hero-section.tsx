@@ -19,7 +19,7 @@ export default function HeroSection() {
           <button onClick={() => go("products")} className="group flex w-fit shrink-0 items-center gap-3 whitespace-nowrap rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-foreground reveal reveal-delay-3">Explore our solutions <ArrowDownRight size={17} className="transition-transform group-hover:translate-x-1 group-hover:translate-y-1" /></button>
         </div>
       </div>
-      <div className="relative mt-5 min-h-[300px] self-center reveal reveal-delay-2 sm:min-h-[350px] lg:mt-0 lg:min-h-[420px]">
+      <div className="relative mt-5 min-h-[300px] w-full self-center reveal reveal-delay-2 sm:min-h-[350px] lg:mt-0 lg:min-h-[420px]">
         <div className="absolute inset-x-5 top-5 h-[calc(100%-2.5rem)] rounded-2xl border border-accent/15 bg-white/80 shadow-[0_24px_80px_hsl(232_38%_18%/.08)] sm:inset-x-8 lg:inset-x-0" />
         <div className="relative mx-auto max-w-[430px] rounded-xl border border-border bg-white p-5 shadow-lg sm:p-7">
           <div className="flex items-start justify-between gap-5 border-b border-border pb-5">

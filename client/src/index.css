@@ -100,10 +100,93 @@
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'DM Sans', system-ui, sans-serif;
     background: hsl(0 0% 100%);
+    overflow-x: hidden;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-shell {
+    width: min(100% - 28px, 1160px);
+  }
+
+  .display-type {
+    overflow-wrap: anywhere;
+  }
+
+  .theme-switcher {
+    right: 10px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    gap: 2px;
+    padding: 4px;
+  }
+
+  .theme-switcher button {
+    min-height: 38px;
+    min-width: 38px;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  #home h1 {
+    font-size: clamp(2.35rem, 11vw, 3.35rem);
+    line-height: 1.08;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  #home .relative.mx-auto {
+    width: 100%;
+  }
+
+  #home .relative.mx-auto .grid {
+    grid-template-columns: 1fr;
+  }
+
+  #home .relative.mx-auto {
+    padding: 1.15rem;
+  }
+
+  #home .relative.mx-auto .mt-5 {
+    margin-top: 1rem;
+  }
+
+  #home .relative.mx-auto p {
+    overflow-wrap: anywhere;
+  }
+
+  #about h2,
+  #startups h2,
+  #contact h2 {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  #products h2 {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  #products article {
+    min-width: 0;
+  }
+
+  #products article h3 {
+    overflow-wrap: anywhere;
+  }
+
+  #contact form {
+    min-width: 0;
+  }
+
+  #contact .grid {
+    gap: 2rem;
+  }
+
+  footer a,
+  footer button {
+    min-height: 40px;
   }
 }
 

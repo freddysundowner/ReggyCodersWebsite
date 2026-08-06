@@ -118,7 +118,7 @@ export function BlogPostPage() {
           <div className="mt-6 flex items-center gap-3 border-b border-border pb-7 text-xs text-muted-foreground"><span className="flex items-center gap-1"><User size={13} /> {post.author}</span><span className="h-1 w-1 rounded-full bg-accent" /><span>ReggyCodas journal</span></div>
         </div>
         {post.coverImage && <div className="mt-10 max-w-5xl overflow-hidden rounded-lg bg-muted"><img src={post.coverImage} alt={post.title} className="max-h-[30rem] h-auto w-full object-cover" /></div>}
-        <article className="prose prose-slate mt-12 max-w-3xl whitespace-pre-wrap text-base leading-8 text-foreground/80" data-testid="text-post-content">{post.content}</article>
+        <article className="prose prose-slate mt-12 max-w-3xl break-words whitespace-pre-wrap text-base leading-8 text-foreground/80" data-testid="text-post-content">{post.content}</article>
       </main>
       <PageFooter />
     </div>

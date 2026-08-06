@@ -21,6 +21,10 @@ export default function Navigation() {
       </div>
       <button className={`md:hidden transition-colors ${"text-foreground hover:text-primary"}`} onClick={() => setOpen(!open)} aria-label="Toggle menu">{open ? <X /> : <Menu />}</button>
     </div>
-    {open && <div className="border-t border-border bg-background px-5 py-5 md:hidden">{links.map((l) => <button key={l.id} onClick={() => go(l.id)} className="block w-full border-b border-border py-4 text-left font-semibold">{l.label}</button>)}<Link href="/blog" onClick={() => setOpen(false)} className="block py-4 font-semibold">Journal</Link></div>}
+    {open && <div className="border-t border-border bg-background px-5 py-4 shadow-lg md:hidden">
+      {links.map((l) => <button key={l.id} onClick={() => go(l.id)} className="block min-h-12 w-full border-b border-border py-3 text-left font-semibold">{l.label}</button>)}
+      <Link href="/blog" onClick={() => setOpen(false)} className="block min-h-12 border-b border-border py-3 font-semibold">Journal</Link>
+      <button onClick={() => go("contact")} className="mt-4 flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-4 py-3 text-sm font-bold text-accent-foreground">Talk to us <ArrowUpRight size={15} className="ml-2" /></button>
+    </div>}
   </nav>;
 }
