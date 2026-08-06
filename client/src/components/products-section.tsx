@@ -128,7 +128,7 @@ export default function ProductsSection() {
                 style={{ borderTopColor: product.accent, borderTopWidth: "3px" }}
               >
                 <div className={`relative overflow-hidden bg-muted ${index === 0 ? "h-72 md:h-[26rem]" : "h-48"}`}>
-                  <img src={product.image} alt={`${product.name} interface`} className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+                  <img src={product.image} alt={`${product.name} interface`} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                   <div className="absolute left-4 top-4 grid h-10 w-10 place-items-center text-white" style={{ backgroundColor: product.accent }}>
                     <Icon size={20} />
                   </div>
