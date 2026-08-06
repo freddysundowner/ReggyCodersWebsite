@@ -8,6 +8,7 @@ import Home from "@/pages/home";
 import AdminLogin from "@/pages/admin-login";
 import AdminDashboard from "@/pages/admin";
 import { BlogList, BlogPostPage } from "@/pages/blog";
+import ThemeSwitcher from "@/components/theme-switcher";
 
 function Router() {
   return (
@@ -27,6 +28,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <ThemeSwitcher />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>
