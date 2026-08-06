@@ -12,7 +12,7 @@ export default function HeroSection() {
   return <section id="home" className="soft-grid relative overflow-hidden bg-background pt-[76px] text-primary">
     <div className="section-shell grid min-h-[650px] items-center gap-12 py-20 lg:grid-cols-[1.02fr_.98fr] lg:py-28">
       <div className="relative z-10">
-        <p className="eyebrow reveal text-accent">Your technology partner</p>
+        <p className="eyebrow reveal text-accent">Where solutions count</p>
         <h1 className="display-type reveal reveal-delay-1 mt-5 max-w-2xl text-5xl font-extrabold leading-[1.08] sm:text-6xl lg:text-[4.6rem]">We build technology that helps <span className="text-accent">business grow.</span></h1>
         <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
           <p className="max-w-md text-base leading-7 text-muted-foreground reveal reveal-delay-2">Practical software for the people running shops, properties, clinics and financial communities everywhere.</p>

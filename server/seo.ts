@@ -65,7 +65,7 @@ function organizationJsonLd(baseUrl: string) {
     founder: { "@type": "Person", name: "Fredrick Mundia Githumbi" },
     email: "info@reggycodas.com",
     telephone: "+254720044055",
-    address: { "@type": "PostalAddress", addressLocality: "Nairobi", addressCountry: "KE" },
+    address: { "@type": "PostalAddress", streetAddress: "Spur Mall, 1st Floor, Room F48", addressCountry: "KE" },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+254720044055",

@@ -57,7 +57,7 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: "Location",
-      value: "Nairobi, Kenya"
+      value: "Spur Mall, 1st Floor, Room F48"
     },
     {
       icon: Mail,

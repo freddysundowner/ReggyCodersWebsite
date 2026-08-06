@@ -26,48 +26,6 @@
   --radius: 0.65rem;
 }
 
-/* Theme 1 is the default Classic palette above. The alternate palettes keep
-   the same component language while changing the atmosphere of every surface. */
-[data-theme="navy"] {
-  --background: hsl(225, 42%, 97%);
-  --foreground: hsl(228, 27%, 16%);
-  --muted: hsl(224, 34%, 93%);
-  --muted-foreground: hsl(227, 16%, 39%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(228, 27%, 16%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(228, 27%, 16%);
-  --border: hsl(226, 25%, 84%);
-  --input: hsl(226, 25%, 80%);
-  --primary: hsl(244, 43%, 23%);
-  --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(25, 100%, 52%);
-  --secondary-foreground: hsl(244, 43%, 18%);
-  --accent: hsl(25, 100%, 52%);
-  --accent-foreground: hsl(244, 43%, 18%);
-  --ring: hsl(244, 43%, 23%);
-}
-
-[data-theme="warm"] {
-  --background: hsl(40, 43%, 97%);
-  --foreground: hsl(244, 28%, 21%);
-  --muted: hsl(38, 39%, 92%);
-  --muted-foreground: hsl(28, 18%, 43%);
-  --popover: hsl(40, 43%, 98%);
-  --popover-foreground: hsl(244, 28%, 21%);
-  --card: hsl(40, 50%, 99%);
-  --card-foreground: hsl(244, 28%, 21%);
-  --border: hsl(31, 28%, 83%);
-  --input: hsl(31, 28%, 77%);
-  --primary: hsl(244, 43%, 23%);
-  --primary-foreground: hsl(40, 43%, 97%);
-  --secondary: hsl(20, 89%, 48%);
-  --secondary-foreground: hsl(40, 43%, 97%);
-  --accent: hsl(20, 89%, 48%);
-  --accent-foreground: hsl(40, 43%, 97%);
-  --ring: hsl(244, 43%, 23%);
-}
-
 .dark {
   --background: hsl(240, 10%, 3.9%);
   --foreground: hsl(0, 0%, 98%);
@@ -129,13 +87,6 @@
     overflow-wrap: anywhere;
   }
 
-  .theme-switcher {
-    right: 10px;
-    bottom: max(10px, env(safe-area-inset-bottom));
-    gap: 2px;
-    padding: 4px;
-  }
-
   footer {
     padding-bottom: 94px !important;
   }
@@ -150,26 +101,6 @@
     min-height: 12rem;
     object-fit: contain;
     object-position: center;
-  }
-
-  .theme-switcher button {
-    min-height: 38px;
-    min-width: 38px;
-    justify-content: center;
-    padding: 8px;
-  }
-
-  .theme-switcher .theme-option {
-    display: none;
-  }
-
-  .theme-switcher.is-expanded .theme-option {
-    display: flex;
-  }
-
-  .theme-switcher .theme-toggle,
-  .theme-switcher.is-expanded .theme-toggle {
-    display: flex;
   }
 
   #home h1 {
@@ -272,94 +203,6 @@
   .text-balance {
     text-wrap: balance;
   }
-}
-
-[data-theme="navy"] body {
-  background: hsl(225 42% 97%);
-}
-
-[data-theme="warm"] body {
-  background: hsl(40 43% 97%);
-}
-
-[data-theme="navy"] #home {
-  background: linear-gradient(145deg, hsl(244 43% 23%) 0%, hsl(238 38% 30%) 48%, hsl(225 42% 97%) 100%);
-  color: hsl(0 0% 100%);
-}
-
-[data-theme="navy"] #home .text-muted-foreground {
-  color: hsl(225 26% 86%);
-}
-
-[data-theme="navy"] #home .text-primary {
-  color: hsl(0 0% 100%);
-}
-
-[data-theme="navy"] #home .bg-primary {
-  background-color: hsl(25 100% 52%);
-  color: hsl(244 43% 18%);
-}
-
-[data-theme="navy"] #home .border-border {
-  border-color: hsl(0 0% 100% / .18);
-}
-
-[data-theme="navy"] .soft-grid {
-  background-image: linear-gradient(hsl(0 0% 100% / .07) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100% / .07) 1px, transparent 1px);
-}
-
-[data-theme="warm"] #home {
-  background: linear-gradient(145deg, hsl(40 43% 97%) 0%, hsl(35 55% 94%) 68%, hsl(20 89% 48% / .12) 100%);
-}
-
-[data-theme="warm"] #products,
-[data-theme="warm"] #contact {
-  background: hsl(40 43% 97%);
-}
-
-[data-theme="warm"] .soft-grid {
-  background-image: linear-gradient(hsl(20 89% 48% / .08) 1px, transparent 1px), linear-gradient(90deg, hsl(20 89% 48% / .08) 1px, transparent 1px);
-}
-
-[data-theme="navy"] nav img,
-[data-theme="navy"] header img {
-  background: hsl(0 0% 100%);
-  padding: 5px 8px;
-  border-radius: 4px;
-}
-
-.theme-switcher {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 60;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 5px;
-  border: 1px solid hsl(var(--border));
-  border-radius: 999px;
-  background: hsl(var(--card) / .94);
-  box-shadow: 0 8px 24px hsl(var(--primary) / .14);
-  backdrop-filter: blur(12px);
-}
-
-.theme-switcher button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-radius: 999px;
-  padding: 7px 9px;
-  color: hsl(var(--muted-foreground));
-  font-size: 10px;
-  font-weight: 700;
-  transition: background-color .2s ease, color .2s ease;
-}
-
-.theme-switcher button:hover,
-.theme-switcher button[aria-pressed="true"] {
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
 }
 
 .theme-swatch {
