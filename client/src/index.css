@@ -4,25 +4,25 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(38, 38%, 94%);
-  --foreground: hsl(166, 31%, 13%);
-  --muted: hsl(38, 27%, 88%);
-  --muted-foreground: hsl(166, 10%, 40%);
-  --popover: hsl(38, 38%, 94%);
-  --popover-foreground: hsl(166, 31%, 13%);
-  --card: hsl(40, 43%, 97%);
-  --card-foreground: hsl(166, 31%, 13%);
-  --border: hsl(38, 20%, 79%);
-  --input: hsl(38, 20%, 79%);
-  --primary: hsl(166, 49%, 24%);
-  --primary-foreground: hsl(38, 38%, 94%);
-  --secondary: hsl(42, 68%, 55%);
-  --secondary-foreground: hsl(166, 31%, 13%);
-  --accent: hsl(5, 63%, 52%);
-  --accent-foreground: hsl(38, 38%, 94%);
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(244, 43%, 23%);
+  --muted: hsl(225, 25%, 96%);
+  --muted-foreground: hsl(235, 12%, 48%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(244, 43%, 23%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(244, 43%, 23%);
+  --border: hsl(228, 24%, 87%);
+  --input: hsl(228, 24%, 82%);
+  --primary: hsl(244, 43%, 23%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(8, 72%, 57%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(8, 72%, 57%);
+  --accent-foreground: hsl(0, 0%, 100%);
   --destructive: hsl(0, 84.2%, 60.2%);
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(166, 49%, 24%);
+  --ring: hsl(244, 43%, 23%);
   --radius: 0.25rem;
 }
 
@@ -57,7 +57,7 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Manrope', system-ui, sans-serif;
-    background-image: linear-gradient(hsl(166 31% 13% / .035) 1px, transparent 1px), linear-gradient(90deg, hsl(166 31% 13% / .035) 1px, transparent 1px);
+    background-image: linear-gradient(hsl(244 43% 23% / .035) 1px, transparent 1px), linear-gradient(90deg, hsl(244 43% 23% / .035) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 

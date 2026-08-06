@@ -131,6 +131,7 @@ This is a modern, responsive company website for Reggycodas, a technology compan
 ## Changelog
 
 Changelog:
+- August 6, 2026. Full redesign to the real ReggyCodas brand (white/navy/orange, "Where Solutions Count", R-tile wordmark) based on office photos in `attached_assets/brand/`. Real products (Prosuite, Pointify POS, BankyKit, SunPay, MediCare, LeadsIn) and contact info (+254 720 044 055, info@reggycodas.com). Complete SEO overhaul: server-side tag injection, JSON-LD, sitemap, robots.txt (see SEO Architecture).
 - June 29, 2025. Initial setup
 - March 3, 2026. Added admin panel with authentication, product management (CRUD from database), and contact message viewing. Switched from in-memory to PostgreSQL storage.
 - March 3, 2026. Rebuilt admin as proper CMS with sidebar layout, added blog posts system and SEO settings management.

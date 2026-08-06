@@ -1,7 +1,7 @@
 import type { Express, Request } from "express";
 import { storage } from "./storage";
 
-const SITE_NAME = "Reggycodas";
+const SITE_NAME = "ReggyCodas";
 
 export function escapeHtml(str: string): string {
   return str
@@ -59,10 +59,19 @@ function organizationJsonLd(baseUrl: string) {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
+    slogan: "Where Solutions Count",
     url: baseUrl,
     logo: `${baseUrl}/favicon.ico`,
     founder: { "@type": "Person", name: "Fredrick Mundia Githumbi" },
-    address: { "@type": "PostalAddress", addressCountry: "KE" },
+    email: "info@reggycodas.com",
+    telephone: "+254720044055",
+    address: { "@type": "PostalAddress", addressLocality: "Nairobi", addressCountry: "KE" },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+254720044055",
+      email: "info@reggycodas.com",
+      contactType: "customer service",
+    },
   };
 }
 

@@ -8,7 +8,10 @@ const formatDate = (date: string | Date) =>
   new Date(date).toLocaleDateString("en-KE", { day: "numeric", month: "short", year: "numeric" });
 
 function JournalMark() {
-  return <Link href="/" className="display-type text-xl font-bold tracking-tight">reggycodas<span className="text-accent">.</span></Link>;
+  return <Link href="/" className="flex items-center gap-3 text-primary" aria-label="ReggyCodas home">
+    <span className="grid h-9 w-9 place-items-center bg-accent text-lg font-bold text-accent-foreground display-type skew-x-[-8deg]">R</span>
+    <span className="display-type text-xl font-bold tracking-tight"><span>Reggy</span><span className="text-accent">Codas</span></span>
+  </Link>;
 }
 
 export function BlogList() {
@@ -17,27 +20,27 @@ export function BlogList() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SeoHead pageKey="blog" />
-      <header className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="absolute right-0 top-0 hidden h-full w-1/3 border-l border-primary-foreground/10 lg:block" />
+      <header className="relative overflow-hidden border-b border-border bg-background text-primary">
+        <div className="absolute right-0 top-0 hidden h-full w-1/3 border-l border-primary/10 lg:block" />
         <div className="mx-auto max-w-7xl px-5 pb-20 pt-7 lg:px-10 lg:pb-28">
           <div className="flex items-center justify-between">
             <JournalMark />
-            <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-primary-foreground/70 transition-colors hover:text-secondary" data-testid="link-back-home">
+            <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-primary/70 transition-colors hover:text-accent" data-testid="link-back-home">
               <ArrowLeft size={16} /> Back to studio
             </Link>
           </div>
           <div className="relative z-10 mt-24 max-w-4xl">
-            <p className="eyebrow text-secondary">Reggycodas / Journal</p>
+            <p className="eyebrow text-accent">ReggyCodas / Journal</p>
             <h1 className="display-type mt-6 text-7xl font-bold leading-[.9] sm:text-8xl lg:text-[9.5rem]" data-testid="text-blog-heading">
-              Notes<br /><span className="text-secondary">from</span><br />the work<span className="text-accent">.</span>
+              Notes<br /><span className="text-accent">from</span><br />the work<span className="text-accent">.</span>
             </h1>
             <p className="mt-10 max-w-md text-base leading-7 text-primary-foreground/65">
               Thinking on products, people and the practical business of making technology useful in East Africa.
             </p>
           </div>
           <div className="absolute bottom-8 right-10 hidden text-right lg:block">
-            <p className="eyebrow text-primary-foreground/40">Field notes</p>
-            <p className="mono-type mt-2 text-xs text-secondary">NBO / 01°17′S</p>
+            <p className="eyebrow text-primary/40">Field notes</p>
+            <p className="mono-type mt-2 text-xs text-accent">NBO / 01°17′S</p>
           </div>
         </div>
       </header>
@@ -90,8 +93,8 @@ export function BlogList() {
           </div>
         )}
       </main>
-      <footer className="bg-primary px-5 py-8 text-primary-foreground lg:px-10">
-        <div className="mx-auto flex max-w-7xl items-center justify-between text-xs text-primary-foreground/50"><JournalMark /><span>Made with care in Kenya.</span></div>
+      <footer className="border-t border-border bg-background px-5 py-8 text-primary lg:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between text-xs text-muted-foreground"><JournalMark /><span>Made with care in Kenya.</span></div>
       </footer>
     </div>
   );
@@ -137,7 +140,7 @@ export function BlogPostPage() {
         {post.coverImage && <div className="mt-12 h-72 overflow-hidden bg-muted md:h-[30rem]"><img src={post.coverImage} alt={post.title} className="h-full w-full object-cover grayscale-[30%]" /></div>}
         <article className="mt-14 max-w-3xl whitespace-pre-wrap text-lg leading-8 text-foreground/80 md:ml-24" data-testid="text-post-content">{post.content}</article>
       </main>
-      <footer className="bg-primary px-5 py-8 text-primary-foreground lg:px-10"><div className="mx-auto flex max-w-7xl items-center justify-between text-xs text-primary-foreground/50"><JournalMark /><Link href="/blog" className="hover:text-secondary">Read more notes →</Link></div></footer>
+       <footer className="border-t border-border bg-background px-5 py-8 text-primary lg:px-10"><div className="mx-auto flex max-w-7xl items-center justify-between text-xs text-muted-foreground"><JournalMark /><Link href="/blog" className="hover:text-accent">Read more notes →</Link></div></footer>
     </div>
   );
 }

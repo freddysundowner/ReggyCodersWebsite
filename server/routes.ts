@@ -9,21 +9,21 @@ async function seedSeoSettings() {
   const defaults = [
     {
       pageKey: "global",
-      title: "Reggycodas - Technology Solutions & Software Development | Kenya",
-      description: "Reggycodas develops innovative software solutions and launches groundbreaking startups. From mobile apps to enterprise systems, we transform ideas into powerful digital experiences.",
-      keywords: "software development, mobile apps, POS systems, SACCO software, Kenya technology, startup incubator, Reggycodas",
+      title: "ReggyCodas - Where Solutions Count | Software Development Kenya",
+      description: "ReggyCodas builds technology that helps business grow: Prosuite, Pointify POS, BankyKit, SunPay, MediCare and LeadsIn. Software development, AI & automation and cloud solutions from Nairobi, Kenya.",
+      keywords: "ReggyCodas, software development Kenya, Pointify POS, BankyKit, SunPay, Prosuite, MediCare, LeadsIn, AI automation, cloud solutions, Nairobi",
     },
     {
       pageKey: "home",
-      title: "Reggycodas - Building the Future with Smart Technology",
-      description: "Reggycodas is a Kenyan technology company founded by Fredrick Mundia Githumbi. We build products like Pointify POS, Bankykit, MediCare, Shambakit, and more.",
-      keywords: "Reggycodas, Pointify POS, Bankykit, MediCare, Shambakit, Listing App, Tokshop, Kenya software company",
+      title: "ReggyCodas - We Build Technology That Helps Business Grow",
+      description: "ReggyCodas is a Nairobi software studio building Prosuite, Pointify POS, BankyKit, SunPay, MediCare and LeadsIn. Custom software, AI & automation and cloud solutions — where solutions count.",
+      keywords: "ReggyCodas, Pointify POS, BankyKit, SunPay, Prosuite, MediCare, LeadsIn, Kenya software company, business automation",
     },
     {
       pageKey: "blog",
-      title: "Blog - Reggycodas | Tech Insights & Updates",
-      description: "Read the latest insights, tutorials, and updates from the Reggycodas team on software development, startups, and technology in Kenya.",
-      keywords: "tech blog, software development blog, Kenya tech, startup tips, Reggycodas blog",
+      title: "Blog - ReggyCodas | Tech Insights & Updates",
+      description: "Insights, tutorials and updates from the ReggyCodas team on software development, AI, automation and building technology businesses in Kenya.",
+      keywords: "tech blog, software development blog, Kenya tech, AI automation, ReggyCodas blog",
     },
   ];
 

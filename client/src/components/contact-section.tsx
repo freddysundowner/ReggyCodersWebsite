@@ -57,7 +57,7 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: "Location",
-      value: "Nakuru Mburu Gichua Road, Pioneer Plaza Room 17, Kenya"
+      value: "Nairobi, Kenya"
     },
     {
       icon: Mail,
@@ -67,7 +67,7 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: "Phone",
-      value: "+254 715 363 474"
+      value: "+254 720 044 055"
     }
   ];
 
@@ -83,7 +83,7 @@ export default function ContactSection() {
         <div className="text-center mb-16">
           <p className="eyebrow text-accent">04 / Let’s talk</p><h2 className="display-type mt-4 text-5xl font-bold text-foreground md:text-7xl">A good idea<br /><span className="text-primary/40">needs a first email.</span></h2>
           <p className="text-base text-muted-foreground max-w-xl mx-auto mt-6">
-            Tell us what you’re working on, where it’s stuck, or where it could go next.
+            Maximizing business potential through technology. Tell us what you’re working on.
           </p>
         </div>
 
@@ -149,11 +149,11 @@ export default function ContactSection() {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="custom-software">Custom Software Development</SelectItem>
-                            <SelectItem value="mobile-app">Mobile App Development</SelectItem>
-                            <SelectItem value="startup-incubation">Startup Incubation</SelectItem>
-                            <SelectItem value="existing-products">Existing Products</SelectItem>
-                            <SelectItem value="consultation">Technology Consultation</SelectItem>
+                           <SelectItem value="custom-software">Custom Software</SelectItem>
+                           <SelectItem value="ai-automation">AI & Automation</SelectItem>
+                           <SelectItem value="cloud-solutions">Cloud Solutions</SelectItem>
+                           <SelectItem value="business-automation">Business Automation</SelectItem>
+                           <SelectItem value="consultation">Technology Consultation</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
