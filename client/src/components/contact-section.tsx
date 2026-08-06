@@ -78,20 +78,20 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="contact" className="py-24 bg-background lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Ready to transform your business with technology? Let's discuss your project and create something amazing together.
+          <p className="eyebrow text-accent">04 / Let’s talk</p><h2 className="display-type mt-4 text-5xl font-bold text-foreground md:text-7xl">A good idea<br /><span className="text-primary/40">needs a first email.</span></h2>
+          <p className="text-base text-muted-foreground max-w-xl mx-auto mt-6">
+            Tell us what you’re working on, where it’s stuck, or where it could go next.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <Card className="bg-white dark:bg-gray-800">
+          <Card className="bg-card border-border shadow-none">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h3>
+               <h3 className="display-type text-2xl font-bold mb-6">Send us a message</h3>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
@@ -129,7 +129,7 @@ export default function ContactSection() {
                       <FormItem>
                         <FormLabel>Company (Optional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your company name" {...field} />
+                           <Input placeholder="Your company name" {...field} value={field.value ?? ""} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -142,7 +142,7 @@ export default function ContactSection() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Service Interest</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                           <Select onValueChange={field.onChange} defaultValue={field.value ?? undefined}>
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Select a service" />
@@ -184,7 +184,7 @@ export default function ContactSection() {
                     className="w-full"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                     {isSubmitting ? "Sending..." : "Send message"}
                   </Button>
                 </form>
               </Form>
@@ -194,19 +194,19 @@ export default function ContactSection() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
+              <h3 className="display-type text-2xl font-bold mb-6">Find us here</h3>
               
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
                   return (
                     <div key={index} className="flex items-start">
-                      <div className="bg-primary w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                      <div className="bg-secondary text-primary w-12 h-12 flex items-center justify-center mr-4">
                         <Icon className="text-white h-6 w-6" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{info.title}</h4>
-                        <p className="text-gray-600 dark:text-gray-300">{info.value}</p>
+                        <h4 className="font-semibold">{info.title}</h4>
+                        <p className="text-muted-foreground">{info.value}</p>
                       </div>
                     </div>
                   );

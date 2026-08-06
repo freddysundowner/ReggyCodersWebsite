@@ -119,6 +119,15 @@ This is a modern, responsive company website for Reggycodas, a technology compan
 - **Admin panel**: Visit `/admin/login` — default credentials are `admin` / `admin123` (change after first login)
 - **SESSION_SECRET**: Stored as a Replit secret
 
+## SEO Architecture
+
+- **Server-side injection** (`server/seo.ts`): every HTML response gets full meta tags — title, description, canonical, robots, Open Graph (incl. og:url/locale/article tags), Twitter Cards, and JSON-LD structured data (Organization, WebSite, BlogPosting, BreadcrumbList)
+- **Dynamic sitemap** at `/sitemap.xml` (includes published blog posts) and `/robots.txt` (blocks /admin and /api)
+- **Base URL**: `PUBLIC_BASE_URL` env var if set, else first domain in `REPLIT_DOMAINS` — never trusts request Host headers
+- **Soft 404s**: unknown/unpublished blog slugs return HTTP 404 with noindex; /admin pages are noindex
+- **Client-side** (`client/src/components/seo-head.tsx`): keeps head tags in sync during SPA navigation, removes stale optional tags; blog posts pass an `override` with post data
+- Editable per-page SEO still managed via admin panel (seo_settings table)
+
 ## Changelog
 
 Changelog:

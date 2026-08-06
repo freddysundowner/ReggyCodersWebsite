@@ -1,71 +1,8 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Lock } from "lucide-react";
-
-export default function AdminLogin() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [, setLocation] = useLocation();
-  const { toast } = useToast();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      await apiRequest("POST", "/api/auth/login", { username, password });
-      setLocation("/admin");
-    } catch {
-      toast({ title: "Login failed", description: "Invalid username or password", variant: "destructive" });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <div className="mx-auto bg-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
-            <Lock className="text-white h-8 w-8" />
-          </div>
-          <CardTitle className="text-2xl" data-testid="text-login-title">Admin Login</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Label htmlFor="username">Username</Label>
-              <Input
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter username"
-                data-testid="input-username"
-              />
-            </div>
-            <div>
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password"
-                data-testid="input-password"
-              />
-            </div>
-            <Button type="submit" className="w-full" disabled={loading} data-testid="button-login">
-              {loading ? "Logging in..." : "Login"}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
+export default function AdminLogin() { const [username, setUsername] = useState(""); const [password, setPassword] = useState(""); const [loading, setLoading] = useState(false); const [, setLocation] = useLocation(); const { toast } = useToast(); const submit = async (e: React.FormEvent) => { e.preventDefault(); setLoading(true); try { await apiRequest("POST", "/api/auth/login", { username, password }); setLocation("/admin"); } catch { toast({ title: "Login failed", description: "Invalid username or password", variant: "destructive" }); } finally { setLoading(false); } }; return <main className="min-h-screen bg-primary text-primary-foreground grid lg:grid-cols-2"><div className="hidden lg:flex flex-col justify-between p-12 border-r border-primary-foreground/15"><div className="display-type text-2xl font-bold">reggycodas<span className="text-secondary">.</span></div><div><p className="eyebrow text-secondary">Private workspace</p><h1 className="display-type mt-5 text-7xl font-bold leading-none">Make<br />things<br /><span className="text-secondary">matter.</span></h1></div><p className="text-sm text-primary-foreground/50">Nairobi · Kenya</p></div><div className="flex items-center justify-center px-6 py-16"><div className="w-full max-w-md"><div className="mb-10 lg:hidden display-type text-2xl font-bold">reggycodas<span className="text-secondary">.</span></div><p className="eyebrow text-secondary">Studio access</p><h2 className="display-type mt-4 text-5xl font-bold">Welcome back.</h2><p className="mt-4 text-primary-foreground/60">Sign in to manage what we’re building.</p><form onSubmit={submit} className="mt-10 space-y-6"><div><Label htmlFor="username" className="text-primary-foreground/70">Username</Label><Input id="username" value={username} onChange={e => setUsername(e.target.value)} className="mt-2 border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/40" placeholder="Your username" /></div><div><Label htmlFor="password" className="text-primary-foreground/70">Password</Label><Input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} className="mt-2 border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/40" placeholder="Your password" /></div><Button type="submit" disabled={loading} className="w-full bg-secondary text-primary hover:bg-accent hover:text-primary-foreground">{loading ? "Checking..." : "Enter workspace →"}</Button></form></div></div></main>; }

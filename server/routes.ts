@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, seedAdmin, requireAuth } from "./auth";
+import { registerSeoRoutes } from "./seo";
 import { insertContactSchema, insertProductSchema, insertBlogPostSchema, insertSeoSettingSchema, insertSocialLinkSchema } from "@shared/schema";
 
 async function seedSeoSettings() {
@@ -58,6 +59,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   await seedAdmin();
   await seedSeoSettings();
   await seedSocialLinks();
+  registerSeoRoutes(app);
 
   app.get("/api/products", async (_req, res) => {
     const products = await storage.getProducts();

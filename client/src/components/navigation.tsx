@@ -1,135 +1,27 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["home", "about", "products", "startups", "contact"];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetBottom = offsetTop + element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMenuOpen(false);
-  };
-
-  const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About Us" },
-    { id: "products", label: "Products" },
-    { id: "startups", label: "Startups" },
-    { id: "blog", label: "Blog", href: "/blog" },
-    { id: "contact", label: "Contact" },
-  ];
-
-  return (
-    <nav className="bg-primary shadow-lg fixed w-full top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <img src="/logo.png" alt="Reggycodas" className="h-10" data-testid="img-logo" />
-            </div>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                "href" in item && item.href ? (
-                  <Link
-                    key={item.id}
-                    href={item.href}
-                    className="px-3 py-2 text-sm transition-colors text-gray-300 hover:text-white"
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`px-3 py-2 text-sm transition-colors ${
-                      activeSection === item.id
-                        ? "text-white font-medium border-b-2 border-white"
-                        : "text-gray-300 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                )
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-white"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
-        </div>
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => { const fn = () => setScrolled(window.scrollY > 24); window.addEventListener("scroll", fn); return () => window.removeEventListener("scroll", fn); }, []);
+  const links = [{ id: "about", label: "About" }, { id: "products", label: "Products" }, { id: "startups", label: "Incubation" }, { id: "contact", label: "Contact" }];
+  const go = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setOpen(false); };
+  const overHero = !scrolled;
+  return <nav className={`fixed top-0 z-50 w-full transition-all ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
+    <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-10">
+      <button onClick={() => go("home")} className={`flex items-center gap-3 transition-colors ${overHero ? "text-primary-foreground" : "text-foreground"}`} aria-label="Reggycodas home">
+        <span className="grid h-9 w-9 place-items-center bg-secondary text-primary font-bold display-type text-lg">R</span>
+        <span className="display-type text-xl font-bold tracking-tight">reggycodas<span className="text-accent">.</span></span>
+      </button>
+      <div className="hidden items-center gap-8 md:flex">
+        {links.map((l) => <button key={l.id} onClick={() => go(l.id)} className={`text-sm font-semibold transition-colors ${overHero ? "text-primary-foreground/80 hover:text-secondary" : "text-foreground/70 hover:text-primary"}`}>{l.label}</button>)}
+        <Link href="/blog" className={`text-sm font-semibold transition-colors ${overHero ? "text-primary-foreground/80 hover:text-secondary" : "text-foreground/70 hover:text-primary"}`}>Journal</Link>
+        <button onClick={() => go("contact")} className="flex items-center gap-2 bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground hover:bg-accent transition-colors">Start a conversation <ArrowUpRight size={15} /></button>
       </div>
-
-      {/* Mobile Navigation Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-primary border-t border-blue-700">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
-              "href" in item && item.href ? (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  className="block w-full text-left px-3 py-2 transition-colors text-gray-300 hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-3 py-2 transition-colors ${
-                    activeSection === item.id
-                      ? "text-white font-medium"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              )
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
-  );
+      <button className={`md:hidden transition-colors ${overHero ? "text-primary-foreground hover:text-secondary" : "text-foreground hover:text-primary"}`} onClick={() => setOpen(!open)} aria-label="Toggle menu">{open ? <X /> : <Menu />}</button>
+    </div>
+    {open && <div className="border-t border-border bg-background px-5 py-5 md:hidden">{links.map((l) => <button key={l.id} onClick={() => go(l.id)} className="block w-full border-b border-border py-4 text-left font-semibold">{l.label}</button>)}<Link href="/blog" onClick={() => setOpen(false)} className="block py-4 font-semibold">Journal</Link></div>}
+  </nav>;
 }

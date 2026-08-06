@@ -1,28 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(30, 14.3%, 4.1%);
-  --muted: hsl(60, 4.8%, 95.9%);
-  --muted-foreground: hsl(25, 5.3%, 44.7%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(30, 14.3%, 4.1%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(30, 14.3%, 4.1%);
-  --border: hsl(20, 5.9%, 90%);
-  --input: hsl(20, 5.9%, 90%);
-  --primary: hsl(217, 91%, 60%);
-  --primary-foreground: hsl(210, 100%, 99%);
-  --secondary: hsl(60, 4.8%, 95.9%);
-  --secondary-foreground: hsl(24, 9.8%, 10%);
-  --accent: hsl(25, 95%, 53%);
-  --accent-foreground: hsl(60, 9.1%, 97.8%);
+  --background: hsl(38, 38%, 94%);
+  --foreground: hsl(166, 31%, 13%);
+  --muted: hsl(38, 27%, 88%);
+  --muted-foreground: hsl(166, 10%, 40%);
+  --popover: hsl(38, 38%, 94%);
+  --popover-foreground: hsl(166, 31%, 13%);
+  --card: hsl(40, 43%, 97%);
+  --card-foreground: hsl(166, 31%, 13%);
+  --border: hsl(38, 20%, 79%);
+  --input: hsl(38, 20%, 79%);
+  --primary: hsl(166, 49%, 24%);
+  --primary-foreground: hsl(38, 38%, 94%);
+  --secondary: hsl(42, 68%, 55%);
+  --secondary-foreground: hsl(166, 31%, 13%);
+  --accent: hsl(5, 63%, 52%);
+  --accent-foreground: hsl(38, 38%, 94%);
   --destructive: hsl(0, 84.2%, 60.2%);
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(30, 14.3%, 4.1%);
-  --radius: 0.5rem;
+  --ring: hsl(166, 49%, 24%);
+  --radius: 0.25rem;
 }
 
 .dark {
@@ -55,13 +56,27 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
+    background-image: linear-gradient(hsl(166 31% 13% / .035) 1px, transparent 1px), linear-gradient(90deg, hsl(166 31% 13% / .035) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
   html {
     scroll-behavior: smooth;
   }
 }
+
+@layer components {
+  .display-type { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.055em; }
+  .mono-type { font-family: 'DM Mono', monospace; }
+  .eyebrow { font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; }
+  .reveal { animation: rise-in .7s cubic-bezier(.22,1,.36,1) both; }
+  .reveal-delay-1 { animation-delay: .1s; }
+  .reveal-delay-2 { animation-delay: .2s; }
+  .reveal-delay-3 { animation-delay: .3s; }
+}
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
 @layer utilities {
   .text-balance {

@@ -1,0 +1,2 @@
+- [SEO injection architecture](seo-injection.md) — SEO tags injected server-side in seo.ts; base URL from env, never request Host headers; unknown slugs must 404+noindex.
+- [Package firewall workaround](package-firewall.md) — shell-quote (via drizzle-kit→gel) is blocked; npm `overrides` pins it to ^1.10.0. Keep the override when touching package.json.
