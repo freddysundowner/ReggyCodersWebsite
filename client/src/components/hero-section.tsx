@@ -4,7 +4,7 @@ export default function HeroSection() {
   const products = [
     { name: "Pointify POS", detail: "Retail & inventory", accent: "#8249DF" },
     { name: "ProSuite", detail: "Property operations", accent: "#155DFC" },
-    { name: "BankyKit", detail: "SACCO & finance", accent: "#2563EB" },
+    { name: "BankyKit", detail: "Banking & finance", accent: "#2563EB" },
     { name: "SunPay", detail: "Payment infrastructure", accent: "#8C3CDD" },
     { name: "LeadsIntel", detail: "AI lead discovery", accent: "#0A4F2A" },
     { name: "MediCare", detail: "Clinical management", accent: "#2B315F" },
@@ -12,10 +12,10 @@ export default function HeroSection() {
   return <section id="home" className="soft-grid relative overflow-hidden bg-background pt-[76px] text-primary">
     <div className="section-shell grid min-h-[650px] items-center gap-12 py-20 lg:grid-cols-[1.02fr_.98fr] lg:py-28">
       <div className="relative z-10">
-        <p className="eyebrow reveal text-accent">Technology partner · Nairobi, Kenya</p>
+        <p className="eyebrow reveal text-accent">Your technology partner</p>
         <h1 className="display-type reveal reveal-delay-1 mt-5 max-w-2xl text-5xl font-extrabold leading-[1.08] sm:text-6xl lg:text-[4.6rem]">We build technology that helps <span className="text-accent">business grow.</span></h1>
         <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
-          <p className="max-w-md text-base leading-7 text-muted-foreground reveal reveal-delay-2">Practical software for the people running shops, properties, clinics and financial communities across Kenya.</p>
+          <p className="max-w-md text-base leading-7 text-muted-foreground reveal reveal-delay-2">Practical software for the people running shops, properties, clinics and financial communities everywhere.</p>
           <button onClick={() => go("products")} className="group flex w-fit shrink-0 items-center gap-3 whitespace-nowrap rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-foreground reveal reveal-delay-3">Explore our solutions <ArrowDownRight size={17} className="transition-transform group-hover:translate-x-1 group-hover:translate-y-1" /></button>
         </div>
       </div>
@@ -40,10 +40,10 @@ export default function HeroSection() {
               </div>
             ))}
           </div>
-          <p className="mt-5 border-t border-border pt-4 text-xs leading-5 text-muted-foreground">Software designed around the way Kenyan businesses work.</p>
+          <p className="mt-5 border-t border-border pt-4 text-xs leading-5 text-muted-foreground">Software designed around the way real businesses work.</p>
         </div>
       </div>
     </div>
-    <div className="section-shell flex items-center gap-3 pb-7 text-primary/50"><span className="h-px w-12 bg-accent/70" /><span className="mono-type text-[10px] uppercase tracking-widest">Built for business in Kenya</span></div>
+    <div className="section-shell flex items-center gap-3 pb-7 text-primary/50"><span className="h-px w-12 bg-accent/70" /><span className="mono-type text-[10px] uppercase tracking-widest">Built for growing businesses</span></div>
   </section>;
 }

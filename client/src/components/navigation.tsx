@@ -9,10 +9,10 @@ export default function Navigation() {
   const links = [{ id: "about", label: "About" }, { id: "products", label: "Products" }, { id: "startups", label: "Incubation" }, { id: "contact", label: "Contact" }];
   const go = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setOpen(false); };
   const overHero = !scrolled;
-  return <nav className={`fixed top-0 z-50 w-full transition-all ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm" : "bg-background"}`}>
+  return <nav className={`fixed top-0 z-50 w-full transition-all ${scrolled || open ? "bg-background border-b border-border shadow-sm" : "bg-background"}`}>
     <div className="section-shell flex h-[76px] items-center justify-between">
         <button onClick={() => go("home")} className="flex items-center" aria-label="Reggycodas home">
-         <img src="/reggycodas-logo.png" alt="ReggyCodas — Where Solutions Count" className="h-10 w-auto" />
+         <img src="/logo-light.png" alt="ReggyCodas — Where Solutions Count" className="h-10 w-auto" />
       </button>
       <div className="hidden items-center gap-8 md:flex">
         {links.map((l) => <button key={l.id} onClick={() => go(l.id)} className={`text-sm font-semibold transition-colors ${"text-foreground/70 hover:text-primary"}`}>{l.label}</button>)}
@@ -21,7 +21,7 @@ export default function Navigation() {
       </div>
       <button className={`md:hidden transition-colors ${"text-foreground hover:text-primary"}`} onClick={() => setOpen(!open)} aria-label="Toggle menu">{open ? <X /> : <Menu />}</button>
     </div>
-    {open && <div className="border-t border-border bg-background px-5 py-4 shadow-lg md:hidden">
+    {open && <div className="relative z-10 border-t border-border bg-background px-5 py-4 shadow-lg md:hidden">
       {links.map((l) => <button key={l.id} onClick={() => go(l.id)} className="block min-h-12 w-full border-b border-border py-3 text-left font-semibold">{l.label}</button>)}
       <Link href="/blog" onClick={() => setOpen(false)} className="block min-h-12 border-b border-border py-3 font-semibold">Journal</Link>
       <button onClick={() => go("contact")} className="mt-4 flex min-h-11 w-full items-center justify-center rounded-md bg-accent px-4 py-3 text-sm font-bold text-accent-foreground">Talk to us <ArrowUpRight size={15} className="ml-2" /></button>

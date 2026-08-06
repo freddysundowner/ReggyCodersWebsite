@@ -25,6 +25,7 @@ if (typeof document !== "undefined") applyTheme(readTheme());
 
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState<Theme>(readTheme);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     applyTheme(theme);
@@ -32,14 +33,27 @@ export default function ThemeSwitcher() {
   }, [theme]);
 
   return (
-    <div className="theme-switcher" aria-label="Choose site theme">
+    <div className={`theme-switcher ${expanded ? "is-expanded" : ""}`} aria-label="Choose site theme">
+      <button
+        type="button"
+        className="theme-toggle"
+        aria-label={expanded ? "Close theme picker" : "Open theme picker"}
+        aria-expanded={expanded}
+        onClick={() => setExpanded((value) => !value)}
+      >
+        <span className="theme-swatch" style={{ backgroundColor: themes.find((option) => option.id === theme)?.color }} />
+      </button>
       {themes.map((option) => (
         <button
           key={option.id}
+          className="theme-option"
           type="button"
           aria-label={`Use ${option.label} theme`}
           aria-pressed={theme === option.id}
-          onClick={() => setTheme(option.id)}
+          onClick={() => {
+            setTheme(option.id);
+            setExpanded(false);
+          }}
         >
           <span className="theme-swatch" style={{ backgroundColor: option.color }} />
           <span className="hidden sm:inline">{option.label}</span>

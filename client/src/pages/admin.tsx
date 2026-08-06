@@ -921,7 +921,7 @@ function SeoForm({ pageKey, existing, onClose }: { pageKey: string; existing?: S
           </div>
           <div>
             <Label className="text-xs text-gray-500">Keywords (comma-separated)</Label>
-            <Input value={form.keywords} onChange={(e) => setForm({ ...form, keywords: e.target.value })} placeholder="technology, software, Kenya" data-testid="input-seo-keywords" />
+            <Input value={form.keywords} onChange={(e) => setForm({ ...form, keywords: e.target.value })} placeholder="technology, software, business" data-testid="input-seo-keywords" />
           </div>
           <div>
             <Label className="text-xs text-gray-500">OG Image URL (optional)</Label>

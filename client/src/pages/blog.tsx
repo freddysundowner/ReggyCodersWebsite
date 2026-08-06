@@ -12,7 +12,7 @@ function SiteHeader({ backLabel = "Back to home", backHref = "/" }: { backLabel?
     <header className="border-b border-border bg-background">
       <div className="section-shell flex h-[76px] items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="ReggyCodas home">
-          <img src="/reggycodas-logo.png" alt="ReggyCodas — Where Solutions Count" className="h-10 w-auto" />
+          <img src="/logo-light.png" alt="ReggyCodas — Where Solutions Count" className="h-10 w-auto" />
         </Link>
         <Link href={backHref} className="flex items-center gap-2 text-sm font-semibold text-foreground/65 transition-colors hover:text-accent">
           <ArrowLeft size={16} /> {backLabel}
@@ -26,8 +26,8 @@ function PageFooter() {
   return (
     <footer className="border-t border-border bg-muted">
       <div className="section-shell flex flex-col gap-3 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <Link href="/" className="flex items-center"><img src="/reggycodas-logo.png" alt="ReggyCodas — Where Solutions Count" className="h-9 w-auto" /></Link>
-        <span>Useful ideas from Nairobi, Kenya.</span>
+        <Link href="/" className="flex items-center"><img src="/logo-light.png" alt="ReggyCodas — Where Solutions Count" className="h-9 w-auto" /></Link>
+        <span>Useful ideas from the ReggyCodas team.</span>
       </div>
     </footer>
   );
@@ -44,7 +44,7 @@ export function BlogList() {
         <div className="max-w-3xl">
           <p className="eyebrow text-accent">ReggyCodas journal</p>
           <h1 className="display-type mt-4 text-4xl font-bold leading-tight text-primary md:text-5xl">Ideas for building better businesses.</h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">Practical thinking on software, operations and the people making technology useful across East Africa.</p>
+          <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground">Practical thinking on software, operations and the people making technology useful.</p>
         </div>
         <div className="mt-14 flex items-center justify-between border-b border-border pb-4">
           <p className="text-sm font-semibold text-primary">Latest articles</p>
