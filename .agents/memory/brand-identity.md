@@ -20,3 +20,4 @@ Products must NOT be framed as Kenyan/East African. User: "my products are not k
 
 ## Official logo (2026-08-06)
 Official logo source: https://reggycodas.com/logo.png (white "Reggy" + orange "codas", gradient R mark, transparent PNG for dark bg). Saved as client/public/logo-dark.png; navy-text recolor for light bg at client/public/logo-light.png (made with ImageMagick -opaque white → #1E1B4B). Do NOT use the older AI-recreated reggycodas-logo.png; no white chips behind logos.
+Update: logo blue/cyan gradient recolored to brand navy (light bg) / soft lavender-white (dark bg) so it blends with the site palette — per user request 2026-08-06.
