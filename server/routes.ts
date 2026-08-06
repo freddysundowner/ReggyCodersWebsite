@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, seedAdmin, requireAuth } from "./auth";
 import { registerSeoRoutes } from "./seo";
+import { sendContactNotification } from "./email";
 import { insertContactSchema, insertProductSchema, insertBlogPostSchema, insertSeoSettingSchema, insertSocialLinkSchema } from "@shared/schema";
 
 async function seedSeoSettings() {
@@ -92,6 +93,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const parsed = insertContactSchema.safeParse(req.body);
     if (!parsed.success) return res.status(400).json({ message: parsed.error.message });
     const contact = await storage.createContact(parsed.data);
+    try {
+      await sendContactNotification(parsed.data);
+    } catch (err) {
+      console.error("Failed to send contact notification email via Brevo:", err);
+    }
     res.json(contact);
   });
 
