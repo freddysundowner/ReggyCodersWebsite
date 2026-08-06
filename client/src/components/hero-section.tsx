@@ -1,5 +1,4 @@
 import { ArrowDownRight } from "lucide-react";
-import officeWall from "@assets/brand/office-tagline-wall.jpeg";
 export default function HeroSection() {
   const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   return <section id="home" className="relative min-h-[90vh] overflow-hidden bg-background text-primary pt-20">
@@ -13,9 +12,9 @@ export default function HeroSection() {
           <button onClick={() => go("products")} className="group flex w-fit items-center gap-3 border-b border-accent pb-2 text-sm font-bold text-accent reveal reveal-delay-3">Explore our products <ArrowDownRight size={18} className="transition-transform group-hover:translate-x-1 group-hover:translate-y-1" /></button>
         </div>
       </div>
-      <div className="relative hidden min-h-[420px] lg:block">
-        <div className="absolute right-0 top-2 h-[430px] w-[320px] overflow-hidden border-8 border-primary/10 shadow-xl rotate-2"><img src={officeWall} alt="ReggyCodas office wall" className="h-full w-full object-cover" /></div>
-        <div className="absolute bottom-8 left-6 max-w-xs border-l-2 border-accent bg-background/90 p-4 pl-5 text-sm leading-6 text-muted-foreground">Smart solutions. Real impact. Lasting growth.</div>
+      <div className="relative hidden min-h-[420px] lg:flex flex-col items-end justify-center gap-8">
+        <img src="/reggycodas-logo.png" alt="ReggyCodas — Where Solutions Count" className="w-[340px] reveal reveal-delay-2" />
+        <div className="max-w-xs border-l-2 border-accent p-4 pl-5 text-sm leading-6 text-muted-foreground text-right border-l-0 border-r-2 pr-5">Smart solutions. Real impact. Lasting growth.</div>
       </div>
     </div>
     <div className="absolute bottom-7 left-5 flex items-center gap-3 text-primary/50 lg:left-10"><span className="h-px w-12 bg-accent/70" /><span className="mono-type text-[10px] uppercase tracking-widest">Scroll to explore</span></div>

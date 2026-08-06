@@ -12,8 +12,7 @@ export default function Navigation() {
   return <nav className={`fixed top-0 z-50 w-full transition-all ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
     <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-10">
       <button onClick={() => go("home")} className={`flex items-center gap-3 transition-colors ${"text-foreground"}`} aria-label="Reggycodas home">
-        <span className="grid h-9 w-9 place-items-center bg-accent text-primary-foreground font-bold display-type text-lg skew-x-[-8deg]">R</span>
-        <span className="display-type text-xl font-bold tracking-tight"><span className="text-primary">Reggy</span><span className="text-accent">Codas</span></span>
+        <img src="/reggycodas-logo.png" alt="ReggyCodas — Where Solutions Count" className="h-11 w-auto" />
       </button>
       <div className="hidden items-center gap-8 md:flex">
         {links.map((l) => <button key={l.id} onClick={() => go(l.id)} className={`text-sm font-semibold transition-colors ${"text-foreground/70 hover:text-primary"}`}>{l.label}</button>)}

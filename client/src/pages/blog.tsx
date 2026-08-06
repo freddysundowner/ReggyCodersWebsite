@@ -9,8 +9,7 @@ const formatDate = (date: string | Date) =>
 
 function JournalMark() {
   return <Link href="/" className="flex items-center gap-3 text-primary" aria-label="ReggyCodas home">
-    <span className="grid h-9 w-9 place-items-center bg-accent text-lg font-bold text-accent-foreground display-type skew-x-[-8deg]">R</span>
-    <span className="display-type text-xl font-bold tracking-tight"><span>Reggy</span><span className="text-accent">Codas</span></span>
+    <img src="/reggycodas-logo.png" alt="ReggyCodas — Where Solutions Count" className="h-11 w-auto" />
   </Link>;
 }
 
