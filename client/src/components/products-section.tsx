@@ -108,23 +108,23 @@ export default function ProductsSection() {
   }));
 
   return (
-    <section id="products" className="bg-background py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-10">
+    <section id="products" className="bg-background py-24 lg:py-28">
+      <div className="section-shell">
         <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="eyebrow text-accent">Building softwares that powers growth</p>
-            <h2 className="display-type mt-4 text-5xl font-bold md:text-7xl">Solutions that<br /><span className="text-primary/40">move business forward.</span></h2>
+            <p className="eyebrow text-accent">Our products</p>
+            <h2 className="display-type mt-4 text-4xl font-bold md:text-5xl">Tools built around<br /><span className="text-primary/40">real business needs.</span></h2>
           </div>
           <p className="max-w-xs text-sm leading-6 text-muted-foreground">Smart solutions. Real impact. Lasting growth.</p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product, index) => {
             const Icon = icons[product.icon] || ScanBarcode;
             return (
               <article
                 key={product.id || product.name}
-                className={`group border border-border bg-card p-3 transition-all duration-300 hover:-translate-y-1 ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
+                className={`group rounded-lg border border-border bg-card p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${index === 0 ? "md:col-span-2" : ""}`}
                 style={{ borderTopColor: product.accent, borderTopWidth: "3px" }}
               >
                 <div className={`relative overflow-hidden bg-muted ${index === 0 ? "h-72 md:h-[26rem]" : "h-48"}`}>

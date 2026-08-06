@@ -9,15 +9,15 @@ export default function Navigation() {
   const links = [{ id: "about", label: "About" }, { id: "products", label: "Products" }, { id: "startups", label: "Incubation" }, { id: "contact", label: "Contact" }];
   const go = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setOpen(false); };
   const overHero = !scrolled;
-  return <nav className={`fixed top-0 z-50 w-full transition-all ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
-    <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-10">
-      <button onClick={() => go("home")} className={`flex items-center gap-3 transition-colors ${"text-foreground"}`} aria-label="Reggycodas home">
-        <img src="/reggycodas-logo.png" alt="ReggyCodas — Where Solutions Count" className="h-11 w-auto" />
+  return <nav className={`fixed top-0 z-50 w-full transition-all ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm" : "bg-background"}`}>
+    <div className="section-shell flex h-[76px] items-center justify-between">
+        <button onClick={() => go("home")} className="flex items-center" aria-label="Reggycodas home">
+         <img src="/reggycodas-logo.png" alt="ReggyCodas — Where Solutions Count" className="h-10 w-auto" />
       </button>
       <div className="hidden items-center gap-8 md:flex">
         {links.map((l) => <button key={l.id} onClick={() => go(l.id)} className={`text-sm font-semibold transition-colors ${"text-foreground/70 hover:text-primary"}`}>{l.label}</button>)}
         <Link href="/blog" className={`text-sm font-semibold transition-colors ${"text-foreground/70 hover:text-primary"}`}>Journal</Link>
-        <button onClick={() => go("contact")} className="flex items-center gap-2 bg-accent px-4 py-2.5 text-sm font-bold text-accent-foreground hover:bg-primary transition-colors">Start a conversation <ArrowUpRight size={15} /></button>
+         <button onClick={() => go("contact")} className="flex items-center gap-2 rounded-md bg-accent px-4 py-2.5 text-sm font-bold text-accent-foreground hover:bg-primary transition-colors">Talk to us <ArrowUpRight size={15} /></button>
       </div>
       <button className={`md:hidden transition-colors ${"text-foreground hover:text-primary"}`} onClick={() => setOpen(!open)} aria-label="Toggle menu">{open ? <X /> : <Menu />}</button>
     </div>

@@ -1,29 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --background: hsl(0, 0%, 100%);
-  --foreground: hsl(244, 43%, 23%);
-  --muted: hsl(225, 25%, 96%);
-  --muted-foreground: hsl(235, 12%, 48%);
+  --foreground: hsl(232, 38%, 18%);
+  --muted: hsl(225, 32%, 97%);
+  --muted-foreground: hsl(228, 16%, 45%);
   --popover: hsl(0, 0%, 100%);
   --popover-foreground: hsl(244, 43%, 23%);
   --card: hsl(0, 0%, 100%);
   --card-foreground: hsl(244, 43%, 23%);
-  --border: hsl(228, 24%, 87%);
-  --input: hsl(228, 24%, 82%);
-  --primary: hsl(244, 43%, 23%);
+  --border: hsl(226, 25%, 88%);
+  --input: hsl(226, 25%, 82%);
+  --primary: hsl(232, 38%, 18%);
   --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(8, 72%, 57%);
+  --secondary: hsl(25, 100%, 52%);
   --secondary-foreground: hsl(0, 0%, 100%);
-  --accent: hsl(8, 72%, 57%);
+  --accent: hsl(25, 100%, 52%);
   --accent-foreground: hsl(0, 0%, 100%);
   --destructive: hsl(0, 84.2%, 60.2%);
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(244, 43%, 23%);
-  --radius: 0.25rem;
+  --ring: hsl(232, 38%, 18%);
+  --radius: 0.65rem;
 }
 
 .dark {
@@ -56,9 +56,8 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Manrope', system-ui, sans-serif;
-    background-image: linear-gradient(hsl(244 43% 23% / .035) 1px, transparent 1px), linear-gradient(90deg, hsl(244 43% 23% / .035) 1px, transparent 1px);
-    background-size: 32px 32px;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: hsl(0 0% 100%);
   }
 
   html {
@@ -67,14 +66,19 @@
 }
 
 @layer components {
-  .display-type { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.055em; }
-  .mono-type { font-family: 'DM Mono', monospace; }
-  .eyebrow { font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; }
-  .reveal { animation: rise-in .7s cubic-bezier(.22,1,.36,1) both; }
+  .display-type { font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.035em; }
+  .mono-type { font-family: 'DM Sans', sans-serif; }
+  .eyebrow { font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: .68rem; }
+  .reveal { animation: rise-in .65s ease both; }
   .reveal-delay-1 { animation-delay: .1s; }
   .reveal-delay-2 { animation-delay: .2s; }
   .reveal-delay-3 { animation-delay: .3s; }
 }
+
+.section-shell { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+.soft-grid { background-image: linear-gradient(hsl(232 38% 18% / .035) 1px, transparent 1px), linear-gradient(90deg, hsl(232 38% 18% / .035) 1px, transparent 1px); background-size: 44px 44px; }
+.outline-button { border: 1px solid hsl(232 38% 18% / .2); color: hsl(var(--primary)); }
+.outline-button:hover { border-color: hsl(var(--accent)); color: hsl(var(--accent)); }
 
 @keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 

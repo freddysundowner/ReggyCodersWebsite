@@ -78,10 +78,10 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-background lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 bg-background lg:py-28">
+      <div className="section-shell">
         <div className="text-center mb-16">
-          <p className="eyebrow text-accent">04 / Let’s talk</p><h2 className="display-type mt-4 text-5xl font-bold text-foreground md:text-7xl">A good idea<br /><span className="text-primary/40">needs a first email.</span></h2>
+          <p className="eyebrow text-accent">Start a conversation</p><h2 className="display-type mt-4 text-4xl font-bold text-foreground md:text-5xl">Let’s make your next<br /><span className="text-primary/40">business move clearer.</span></h2>
           <p className="text-base text-muted-foreground max-w-xl mx-auto mt-6">
             Maximizing business potential through technology. Tell us what you’re working on.
           </p>
@@ -89,7 +89,7 @@ export default function ContactSection() {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <Card className="bg-card border-border shadow-none">
+           <Card className="bg-card border-border shadow-sm">
             <CardContent className="p-8">
                <h3 className="display-type text-2xl font-bold mb-6">Send us a message</h3>
               <Form {...form}>
@@ -181,7 +181,7 @@ export default function ContactSection() {
                   
                   <Button 
                     type="submit" 
-                    className="w-full"
+                     className="w-full rounded-md bg-primary"
                     disabled={isSubmitting}
                   >
                      {isSubmitting ? "Sending..." : "Send message"}
